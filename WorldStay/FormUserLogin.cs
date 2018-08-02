@@ -10,9 +10,9 @@ using System.Windows.Forms;
 
 namespace WorldStay
 {
-    public partial class Form1 : Form
+    public partial class FormUserLogin : Form
     {
-        public Form1()
+        public FormUserLogin()
         {
             InitializeComponent();
         }
