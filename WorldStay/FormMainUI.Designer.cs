@@ -30,55 +30,162 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormMainUI));
             this.panelLeftNavigation = new System.Windows.Forms.Panel();
-            this.buttonNavHome = new System.Windows.Forms.Button();
+            this.navIndicatorProfile = new System.Windows.Forms.Panel();
+            this.navIndicatorCheckout = new System.Windows.Forms.Panel();
+            this.navIndicatorFavourites = new System.Windows.Forms.Panel();
+            this.navIndicatorSearch = new System.Windows.Forms.Panel();
+            this.buttonNavProfile = new System.Windows.Forms.Button();
+            this.buttonNavCheckout = new System.Windows.Forms.Button();
+            this.buttonNavFavourites = new System.Windows.Forms.Button();
+            this.buttonNavSearch = new System.Windows.Forms.Button();
             this.panelTopStrip = new System.Windows.Forms.Panel();
             this.panel3 = new System.Windows.Forms.Panel();
             this.panel4 = new System.Windows.Forms.Panel();
             this.pictureBoxTopLogo = new System.Windows.Forms.PictureBox();
             this.buttonCloseForm = new System.Windows.Forms.Button();
-            this.button1 = new System.Windows.Forms.Button();
-            this.button2 = new System.Windows.Forms.Button();
-            this.button3 = new System.Windows.Forms.Button();
-            this.button4 = new System.Windows.Forms.Button();
             this.pictureBoxSmallLogo = new System.Windows.Forms.PictureBox();
+            this.panelSearch = new System.Windows.Forms.Panel();
+            this.panelFavourites = new System.Windows.Forms.Panel();
+            this.panelCheckout = new System.Windows.Forms.Panel();
+            this.panelProfile = new System.Windows.Forms.Panel();
+            this.buttonReseedData = new System.Windows.Forms.Button();
+            this.dataGridViewSuites = new System.Windows.Forms.DataGridView();
             this.panelLeftNavigation.SuspendLayout();
             this.panelTopStrip.SuspendLayout();
             this.panel4.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxTopLogo)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxSmallLogo)).BeginInit();
+            this.panelSearch.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridViewSuites)).BeginInit();
             this.SuspendLayout();
             // 
             // panelLeftNavigation
             // 
             this.panelLeftNavigation.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(35)))), ((int)(((byte)(55)))), ((int)(((byte)(67)))));
-            this.panelLeftNavigation.Controls.Add(this.button4);
-            this.panelLeftNavigation.Controls.Add(this.button3);
-            this.panelLeftNavigation.Controls.Add(this.button2);
-            this.panelLeftNavigation.Controls.Add(this.button1);
-            this.panelLeftNavigation.Controls.Add(this.buttonNavHome);
+            this.panelLeftNavigation.Controls.Add(this.navIndicatorProfile);
+            this.panelLeftNavigation.Controls.Add(this.navIndicatorCheckout);
+            this.panelLeftNavigation.Controls.Add(this.navIndicatorFavourites);
+            this.panelLeftNavigation.Controls.Add(this.navIndicatorSearch);
+            this.panelLeftNavigation.Controls.Add(this.buttonNavProfile);
+            this.panelLeftNavigation.Controls.Add(this.buttonNavCheckout);
+            this.panelLeftNavigation.Controls.Add(this.buttonNavFavourites);
+            this.panelLeftNavigation.Controls.Add(this.buttonNavSearch);
             this.panelLeftNavigation.Dock = System.Windows.Forms.DockStyle.Left;
             this.panelLeftNavigation.Location = new System.Drawing.Point(0, 0);
             this.panelLeftNavigation.Name = "panelLeftNavigation";
             this.panelLeftNavigation.Size = new System.Drawing.Size(411, 1135);
             this.panelLeftNavigation.TabIndex = 0;
             // 
-            // buttonNavHome
+            // navIndicatorProfile
             // 
-            this.buttonNavHome.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
-            this.buttonNavHome.FlatAppearance.BorderSize = 0;
-            this.buttonNavHome.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.buttonNavHome.Font = new System.Drawing.Font("Arial Rounded MT Bold", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.buttonNavHome.ForeColor = System.Drawing.Color.White;
-            this.buttonNavHome.Image = ((System.Drawing.Image)(resources.GetObject("buttonNavHome.Image")));
-            this.buttonNavHome.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.buttonNavHome.Location = new System.Drawing.Point(39, 199);
-            this.buttonNavHome.Name = "buttonNavHome";
-            this.buttonNavHome.Size = new System.Drawing.Size(369, 129);
-            this.buttonNavHome.TabIndex = 0;
-            this.buttonNavHome.Text = "  Home";
-            this.buttonNavHome.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.buttonNavHome.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
-            this.buttonNavHome.UseVisualStyleBackColor = true;
+            this.navIndicatorProfile.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(183)))), ((int)(((byte)(141)))));
+            this.navIndicatorProfile.Location = new System.Drawing.Point(-3, 640);
+            this.navIndicatorProfile.Name = "navIndicatorProfile";
+            this.navIndicatorProfile.Size = new System.Drawing.Size(39, 93);
+            this.navIndicatorProfile.TabIndex = 6;
+            this.navIndicatorProfile.Visible = false;
+            // 
+            // navIndicatorCheckout
+            // 
+            this.navIndicatorCheckout.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(183)))), ((int)(((byte)(141)))));
+            this.navIndicatorCheckout.Location = new System.Drawing.Point(-3, 511);
+            this.navIndicatorCheckout.Name = "navIndicatorCheckout";
+            this.navIndicatorCheckout.Size = new System.Drawing.Size(39, 93);
+            this.navIndicatorCheckout.TabIndex = 6;
+            this.navIndicatorCheckout.Visible = false;
+            // 
+            // navIndicatorFavourites
+            // 
+            this.navIndicatorFavourites.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(183)))), ((int)(((byte)(141)))));
+            this.navIndicatorFavourites.Location = new System.Drawing.Point(-3, 382);
+            this.navIndicatorFavourites.Name = "navIndicatorFavourites";
+            this.navIndicatorFavourites.Size = new System.Drawing.Size(39, 93);
+            this.navIndicatorFavourites.TabIndex = 6;
+            this.navIndicatorFavourites.Visible = false;
+            // 
+            // navIndicatorSearch
+            // 
+            this.navIndicatorSearch.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(183)))), ((int)(((byte)(141)))));
+            this.navIndicatorSearch.Location = new System.Drawing.Point(-3, 253);
+            this.navIndicatorSearch.Name = "navIndicatorSearch";
+            this.navIndicatorSearch.Size = new System.Drawing.Size(39, 93);
+            this.navIndicatorSearch.TabIndex = 6;
+            // 
+            // buttonNavProfile
+            // 
+            this.buttonNavProfile.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.buttonNavProfile.FlatAppearance.BorderSize = 0;
+            this.buttonNavProfile.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.buttonNavProfile.Font = new System.Drawing.Font("Arial Rounded MT Bold", 16.125F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.buttonNavProfile.ForeColor = System.Drawing.Color.White;
+            this.buttonNavProfile.Image = ((System.Drawing.Image)(resources.GetObject("buttonNavProfile.Image")));
+            this.buttonNavProfile.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.buttonNavProfile.Location = new System.Drawing.Point(42, 640);
+            this.buttonNavProfile.Name = "buttonNavProfile";
+            this.buttonNavProfile.Size = new System.Drawing.Size(369, 93);
+            this.buttonNavProfile.TabIndex = 4;
+            this.buttonNavProfile.Text = "  Profile";
+            this.buttonNavProfile.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.buttonNavProfile.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.buttonNavProfile.UseVisualStyleBackColor = true;
+            this.buttonNavProfile.Click += new System.EventHandler(this.buttonNavProfile_Click);
+            // 
+            // buttonNavCheckout
+            // 
+            this.buttonNavCheckout.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.buttonNavCheckout.FlatAppearance.BorderSize = 0;
+            this.buttonNavCheckout.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.buttonNavCheckout.Font = new System.Drawing.Font("Arial Rounded MT Bold", 16.125F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.buttonNavCheckout.ForeColor = System.Drawing.Color.White;
+            this.buttonNavCheckout.Image = ((System.Drawing.Image)(resources.GetObject("buttonNavCheckout.Image")));
+            this.buttonNavCheckout.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.buttonNavCheckout.Location = new System.Drawing.Point(42, 511);
+            this.buttonNavCheckout.Name = "buttonNavCheckout";
+            this.buttonNavCheckout.Size = new System.Drawing.Size(369, 93);
+            this.buttonNavCheckout.TabIndex = 3;
+            this.buttonNavCheckout.Text = "  Checkout";
+            this.buttonNavCheckout.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.buttonNavCheckout.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.buttonNavCheckout.UseVisualStyleBackColor = true;
+            this.buttonNavCheckout.Click += new System.EventHandler(this.buttonNavCheckout_Click);
+            // 
+            // buttonNavFavourites
+            // 
+            this.buttonNavFavourites.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.buttonNavFavourites.FlatAppearance.BorderSize = 0;
+            this.buttonNavFavourites.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.buttonNavFavourites.Font = new System.Drawing.Font("Arial Rounded MT Bold", 16.125F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.buttonNavFavourites.ForeColor = System.Drawing.Color.White;
+            this.buttonNavFavourites.Image = ((System.Drawing.Image)(resources.GetObject("buttonNavFavourites.Image")));
+            this.buttonNavFavourites.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.buttonNavFavourites.Location = new System.Drawing.Point(42, 382);
+            this.buttonNavFavourites.Name = "buttonNavFavourites";
+            this.buttonNavFavourites.Size = new System.Drawing.Size(369, 93);
+            this.buttonNavFavourites.TabIndex = 2;
+            this.buttonNavFavourites.Text = "  Favourites";
+            this.buttonNavFavourites.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.buttonNavFavourites.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.buttonNavFavourites.UseVisualStyleBackColor = true;
+            this.buttonNavFavourites.Click += new System.EventHandler(this.buttonNavFavourites_Click);
+            // 
+            // buttonNavSearch
+            // 
+            this.buttonNavSearch.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.buttonNavSearch.FlatAppearance.BorderSize = 0;
+            this.buttonNavSearch.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.buttonNavSearch.Font = new System.Drawing.Font("Arial Rounded MT Bold", 16.125F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.buttonNavSearch.ForeColor = System.Drawing.Color.White;
+            this.buttonNavSearch.Image = ((System.Drawing.Image)(resources.GetObject("buttonNavSearch.Image")));
+            this.buttonNavSearch.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.buttonNavSearch.Location = new System.Drawing.Point(42, 253);
+            this.buttonNavSearch.Name = "buttonNavSearch";
+            this.buttonNavSearch.Size = new System.Drawing.Size(369, 93);
+            this.buttonNavSearch.TabIndex = 1;
+            this.buttonNavSearch.Text = "  Search";
+            this.buttonNavSearch.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.buttonNavSearch.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.buttonNavSearch.UseVisualStyleBackColor = true;
+            this.buttonNavSearch.Click += new System.EventHandler(this.buttonNavSearch_Click);
             // 
             // panelTopStrip
             // 
@@ -131,78 +238,6 @@
             this.buttonCloseForm.UseVisualStyleBackColor = false;
             this.buttonCloseForm.Click += new System.EventHandler(this.buttonCloseForm_Click);
             // 
-            // button1
-            // 
-            this.button1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
-            this.button1.FlatAppearance.BorderSize = 0;
-            this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button1.Font = new System.Drawing.Font("Arial Rounded MT Bold", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button1.ForeColor = System.Drawing.Color.White;
-            this.button1.Image = ((System.Drawing.Image)(resources.GetObject("button1.Image")));
-            this.button1.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.button1.Location = new System.Drawing.Point(39, 328);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(369, 129);
-            this.button1.TabIndex = 1;
-            this.button1.Text = "  Home";
-            this.button1.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.button1.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
-            this.button1.UseVisualStyleBackColor = true;
-            // 
-            // button2
-            // 
-            this.button2.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
-            this.button2.FlatAppearance.BorderSize = 0;
-            this.button2.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button2.Font = new System.Drawing.Font("Arial Rounded MT Bold", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button2.ForeColor = System.Drawing.Color.White;
-            this.button2.Image = ((System.Drawing.Image)(resources.GetObject("button2.Image")));
-            this.button2.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.button2.Location = new System.Drawing.Point(39, 457);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(369, 129);
-            this.button2.TabIndex = 2;
-            this.button2.Text = "  Home";
-            this.button2.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.button2.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
-            this.button2.UseVisualStyleBackColor = true;
-            // 
-            // button3
-            // 
-            this.button3.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
-            this.button3.FlatAppearance.BorderSize = 0;
-            this.button3.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button3.Font = new System.Drawing.Font("Arial Rounded MT Bold", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button3.ForeColor = System.Drawing.Color.White;
-            this.button3.Image = ((System.Drawing.Image)(resources.GetObject("button3.Image")));
-            this.button3.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.button3.Location = new System.Drawing.Point(39, 586);
-            this.button3.Name = "button3";
-            this.button3.Size = new System.Drawing.Size(369, 129);
-            this.button3.TabIndex = 3;
-            this.button3.Text = "  Home";
-            this.button3.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.button3.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
-            this.button3.UseVisualStyleBackColor = true;
-            // 
-            // button4
-            // 
-            this.button4.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
-            this.button4.FlatAppearance.BorderSize = 0;
-            this.button4.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button4.Font = new System.Drawing.Font("Arial Rounded MT Bold", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button4.ForeColor = System.Drawing.Color.White;
-            this.button4.Image = ((System.Drawing.Image)(resources.GetObject("button4.Image")));
-            this.button4.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.button4.Location = new System.Drawing.Point(39, 715);
-            this.button4.Name = "button4";
-            this.button4.Size = new System.Drawing.Size(369, 129);
-            this.button4.TabIndex = 4;
-            this.button4.Text = "  Home";
-            this.button4.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.button4.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
-            this.button4.UseVisualStyleBackColor = true;
-            // 
             // pictureBoxSmallLogo
             // 
             this.pictureBoxSmallLogo.Image = ((System.Drawing.Image)(resources.GetObject("pictureBoxSmallLogo.Image")));
@@ -213,12 +248,70 @@
             this.pictureBoxSmallLogo.TabIndex = 4;
             this.pictureBoxSmallLogo.TabStop = false;
             // 
+            // panelSearch
+            // 
+            this.panelSearch.BackColor = System.Drawing.Color.White;
+            this.panelSearch.Controls.Add(this.dataGridViewSuites);
+            this.panelSearch.Location = new System.Drawing.Point(417, 79);
+            this.panelSearch.Name = "panelSearch";
+            this.panelSearch.Size = new System.Drawing.Size(1595, 1056);
+            this.panelSearch.TabIndex = 5;
+            // 
+            // panelFavourites
+            // 
+            this.panelFavourites.BackColor = System.Drawing.Color.White;
+            this.panelFavourites.Location = new System.Drawing.Point(417, 79);
+            this.panelFavourites.Name = "panelFavourites";
+            this.panelFavourites.Size = new System.Drawing.Size(1595, 1056);
+            this.panelFavourites.TabIndex = 1;
+            // 
+            // panelCheckout
+            // 
+            this.panelCheckout.BackColor = System.Drawing.Color.White;
+            this.panelCheckout.Location = new System.Drawing.Point(417, 79);
+            this.panelCheckout.Name = "panelCheckout";
+            this.panelCheckout.Size = new System.Drawing.Size(1595, 1056);
+            this.panelCheckout.TabIndex = 1;
+            // 
+            // panelProfile
+            // 
+            this.panelProfile.BackColor = System.Drawing.Color.White;
+            this.panelProfile.Location = new System.Drawing.Point(417, 79);
+            this.panelProfile.Name = "panelProfile";
+            this.panelProfile.Size = new System.Drawing.Size(1595, 1056);
+            this.panelProfile.TabIndex = 1;
+            // 
+            // buttonReseedData
+            // 
+            this.buttonReseedData.Location = new System.Drawing.Point(2035, 966);
+            this.buttonReseedData.Name = "buttonReseedData";
+            this.buttonReseedData.Size = new System.Drawing.Size(110, 62);
+            this.buttonReseedData.TabIndex = 6;
+            this.buttonReseedData.Text = "Reseed";
+            this.buttonReseedData.UseVisualStyleBackColor = true;
+            this.buttonReseedData.Visible = false;
+            this.buttonReseedData.Click += new System.EventHandler(this.buttonReseedData_Click);
+            // 
+            // dataGridViewSuites
+            // 
+            this.dataGridViewSuites.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridViewSuites.Location = new System.Drawing.Point(17, 20);
+            this.dataGridViewSuites.Name = "dataGridViewSuites";
+            this.dataGridViewSuites.RowTemplate.Height = 33;
+            this.dataGridViewSuites.Size = new System.Drawing.Size(1551, 770);
+            this.dataGridViewSuites.TabIndex = 0;
+            // 
             // FormMainUI
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(12F, 25F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(2157, 1135);
+            this.Controls.Add(this.panelSearch);
+            this.Controls.Add(this.buttonReseedData);
+            this.Controls.Add(this.panelProfile);
+            this.Controls.Add(this.panelCheckout);
+            this.Controls.Add(this.panelFavourites);
             this.Controls.Add(this.pictureBoxSmallLogo);
             this.Controls.Add(this.buttonCloseForm);
             this.Controls.Add(this.panel4);
@@ -233,6 +326,8 @@
             this.panel4.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxTopLogo)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxSmallLogo)).EndInit();
+            this.panelSearch.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridViewSuites)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -244,13 +339,22 @@
         private System.Windows.Forms.Panel panel3;
         private System.Windows.Forms.Panel panel4;
         private System.Windows.Forms.PictureBox pictureBoxTopLogo;
-        private System.Windows.Forms.Button buttonNavHome;
         private System.Windows.Forms.Button buttonCloseForm;
-        private System.Windows.Forms.Button button4;
-        private System.Windows.Forms.Button button3;
-        private System.Windows.Forms.Button button2;
-        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Button buttonNavProfile;
+        private System.Windows.Forms.Button buttonNavCheckout;
+        private System.Windows.Forms.Button buttonNavFavourites;
+        private System.Windows.Forms.Button buttonNavSearch;
         private System.Windows.Forms.PictureBox pictureBoxSmallLogo;
+        private System.Windows.Forms.Panel navIndicatorProfile;
+        private System.Windows.Forms.Panel navIndicatorCheckout;
+        private System.Windows.Forms.Panel navIndicatorFavourites;
+        private System.Windows.Forms.Panel navIndicatorSearch;
+        private System.Windows.Forms.Panel panelSearch;
+        private System.Windows.Forms.Panel panelFavourites;
+        private System.Windows.Forms.Panel panelCheckout;
+        private System.Windows.Forms.Panel panelProfile;
+        private System.Windows.Forms.Button buttonReseedData;
+        private System.Windows.Forms.DataGridView dataGridViewSuites;
     }
 }
 

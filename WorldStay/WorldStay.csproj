@@ -46,6 +46,8 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Country.cs" />
+    <Compile Include="DatabaseAccess.cs" />
     <Compile Include="FormMainUI.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -58,10 +60,15 @@
     <Compile Include="FormUserLogin.Designer.cs">
       <DependentUpon>FormUserLogin.cs</DependentUpon>
     </Compile>
+    <Compile Include="Hotel.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Suite.cs" />
     <EmbeddedResource Include="FormMainUI.resx">
       <DependentUpon>FormMainUI.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormUserLogin.resx">
+      <DependentUpon>FormUserLogin.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>

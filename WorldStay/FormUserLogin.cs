@@ -16,5 +16,16 @@ namespace WorldStay
         {
             InitializeComponent();
         }
+
+        private void FormUserLogin_Load(object sender, EventArgs e)
+        {
+            this.Height = 590;
+            this.Width = 1079;
+        }
+
+        private void buttonCloseForm_Click(object sender, EventArgs e)
+        {
+            this.Close();
+        }
     }
 }
