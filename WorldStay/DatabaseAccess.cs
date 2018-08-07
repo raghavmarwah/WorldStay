@@ -77,6 +77,28 @@ namespace WorldStay
         }
 
         /// <summary>
+        /// Inserts a new user to the database
+        /// </summary>
+        /// <param name="u">User Object</param>
+        public void InsertUser(User u)
+        {
+            string sql = "Insert Into Users (UserName, Password, LoyaltyPoints) Values " +
+                $"('{u.UserName}', '{u.Password}', '{u.LoyaltyPoints}')";
+
+            using (SqlCommand command = new SqlCommand(sql, dbConnection))
+            {
+                try
+                {
+                    command.ExecuteNonQuery();
+                }
+                catch (SqlException ex)
+                {
+                    Console.WriteLine($"Error: {ex.Message}");
+                }
+            }
+        }
+
+        /// <summary>
         /// Inserts a new suite to the database
         /// </summary>
         /// <param name="s">Suite Object</param>
@@ -178,6 +200,31 @@ namespace WorldStay
                 while (dataReader.Read())
                 {
                     dataList.Add((String)dataReader["RoomType"]);
+                }
+                dataReader.Close();
+            }
+            return dataList;
+        }
+
+        /// <summary>
+        /// Using SQL Select, return a List of all users in the database
+        /// </summary>
+        /// <returns>List of users</returns>
+        public List<User> GetUsers()
+        {
+            List<User> dataList = new List<User>();
+            string sql = "Select * from Users";
+            using (SqlCommand command = new SqlCommand(sql, dbConnection))
+            {
+                SqlDataReader dataReader = command.ExecuteReader();
+                while (dataReader.Read())
+                {
+                    dataList.Add(new User {
+                        UserId = (int)dataReader["UserId"],
+                        UserName = (String)dataReader["UserName"],
+                        Password = (String)dataReader["Password"],
+                        LoyaltyPoints = (int)dataReader["LoyaltyPoints"]
+                    });
                 }
                 dataReader.Close();
             }

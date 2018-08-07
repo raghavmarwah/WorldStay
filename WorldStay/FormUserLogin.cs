@@ -27,5 +27,11 @@ namespace WorldStay
         {
             this.Close();
         }
+
+        private void buttonSignUp_Click(object sender, EventArgs e)
+        {
+            FormNewUserSignup signUpForm = new FormNewUserSignup();
+            signUpForm.Show();
+        }
     }
 }
