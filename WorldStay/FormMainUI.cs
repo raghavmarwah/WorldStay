@@ -19,6 +19,8 @@ namespace WorldStay
         List<DisplayData> dataList = new List<DisplayData>();
         //global list to store display data
         List<DisplayData> favouriteSuitesList = new List<DisplayData>();
+        //global list of active bookings
+        List<ActiveBooking> activeBookings = new List<ActiveBooking>();
 
         //global int to check buttonView call on which panel
         int buttonViewNum = 1;
@@ -69,12 +71,12 @@ namespace WorldStay
         {
             this.Height = 590;
             this.Width = 1079;
+
+            buttonNavSearch.PerformClick();
             InitializeDataGridView();
             FeedDataToDataGridViewSuites();
             FeedDataToDataGridViewFavourites();
-            comboBoxOrderBy.SelectedIndex= 0;
-
-            panelSearch.BringToFront();
+            comboBoxOrderBy.SelectedIndex= 0;            
             
             dbAccess.OpenConnection();
             List<String> roomTypes = dbAccess.GetRoomTypes();
@@ -126,6 +128,7 @@ namespace WorldStay
             navIndicatorSearch.Visible = true;
             panelSearch.Visible = true;
             buttonViewNum = 1;
+            buttonViewSuite.Visible = true;
         }
 
         private void buttonNavFavourites_Click(object sender, EventArgs e)
@@ -135,6 +138,7 @@ namespace WorldStay
             panelFavourites.Visible = true;
             FeedDataToDataGridViewFavourites();
             buttonViewNum = 2;
+            buttonViewSuite.Visible = true;
         }
 
         private void buttonNavCheckout_Click(object sender, EventArgs e)
@@ -142,12 +146,15 @@ namespace WorldStay
             HideAllNavIndicatorsAndPanels();
             navIndicatorCheckout.Visible = true;
             panelCheckout.Visible = true;
+            buttonViewSuite.Visible = false;
+            UpdateCheckoutBill();
         }
 
         private void buttonNavProfile_Click(object sender, EventArgs e)
         {
             HideAllNavIndicatorsAndPanels();
             navIndicatorProfile.Visible = true;
+            buttonViewSuite.Visible = false;
         }
 
         private void buttonReseedData_Click(object sender, EventArgs e)
@@ -161,6 +168,9 @@ namespace WorldStay
                 dbAccess.TruncateData("Countries");
                 dbAccess.TruncateData("Hotels");
                 dbAccess.TruncateData("Suites");
+                dbAccess.TruncateData("Users");
+                dbAccess.TruncateData("Favourites");
+                dbAccess.TruncateData("ActiveBookings");
 
 
                 String tempLine = "";
@@ -296,7 +306,7 @@ namespace WorldStay
             dataGridViewSuites.RowHeadersWidthSizeMode = DataGridViewRowHeadersWidthSizeMode.DisableResizing;
             dataGridViewSuites.RowHeadersVisible = false;
             dbAccess.OpenConnection();
-            dataList = dbAccess.GetSuites(0).OrderBy(p => p.SuiteId).Select(p => p).ToList();
+            dataList = dbAccess.GetSuites(0).Where(p => p.IsAvailable == true).OrderBy(p => p.SuiteId).Select(p => p).ToList();
             dbAccess.CloseConnection();
             dataGridViewSuites.Rows.Clear();
 
@@ -400,6 +410,43 @@ namespace WorldStay
                 FormDisplaySuite formObject = new FormDisplaySuite(int.Parse(suiteId), userId);
                 formObject.Show();
             }
+        }
+
+        private void UpdateCheckoutBill()
+        {
+            richTextCheckoutBill.Text = "";
+            dbAccess.OpenConnection();
+            activeBookings = dbAccess.returnActiveBookings(userId);
+            dbAccess.CloseConnection();
+
+            float tax, totalPayable = 0;
+
+            String fmt = "{0,-29}{1,-13}{2,-14}{3,-15}{4,-15}{5,-16}{6,-15}";
+            richTextCheckoutBill.Text += String.Format(fmt, "Hotel Name", "Room Number", "Nightly Rate", "Check-In Date", "Stay Duration", "Check-Out Date", "Total Amount")+"\n\n";
+
+            foreach(ActiveBooking ab in activeBookings)
+            {
+                dbAccess.OpenConnection();
+                DisplayData tempSuite = dbAccess.GetSuites(ab.SuiteId)[0];
+                DateTime checkOutDate = ab.CheckInDate.AddDays(ab.StayDuration);
+                float suiteTotal = tempSuite.NightlyRate * ab.StayDuration;
+                totalPayable += suiteTotal;
+                richTextCheckoutBill.Text += String.Format(fmt, tempSuite.HotelName, tempSuite.RoomNumber, tempSuite.NightlyRate, ab.CheckInDate.ToString("dd/MM/yy"), ab.StayDuration, checkOutDate.ToString("dd/MM/yy"), suiteTotal.ToString("c2")) + "\n";
+                dbAccess.CloseConnection();
+            }
+            tax = totalPayable * 0.12f;
+            richTextCheckoutBill.Text += "\n" + String.Format(fmt, "", "", "", "", "", "", "----------") + "\n";
+            richTextCheckoutBill.Text += String.Format(fmt, "Total", "", "", "", "", "", totalPayable.ToString("c2")) + "\n";
+            richTextCheckoutBill.Text += String.Format(fmt, "GST (12%)", "", "", "", "", "", tax.ToString("c2")) + "\n";
+            richTextCheckoutBill.Text += "\n" + String.Format(fmt, "", "", "", "", "", "", "----------") + "\n";
+            richTextCheckoutBill.Text += String.Format(fmt, "Total with Taxes", "", "", "", "", "", (totalPayable+tax).ToString("c2")) + "\n";
+
+            labelTotalPayable.Text = "Total Due: " + (totalPayable + tax).ToString("c2");
+        }
+
+        private void buttonMakePayment_Click(object sender, EventArgs e)
+        {
+            MessageBox.Show("Payment Successful!");
         }
     }
 }

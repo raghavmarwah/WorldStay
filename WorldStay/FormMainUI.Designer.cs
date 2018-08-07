@@ -58,10 +58,14 @@
             this.labelOrderBy = new System.Windows.Forms.Label();
             this.dataGridViewSuites = new System.Windows.Forms.DataGridView();
             this.panelFavourites = new System.Windows.Forms.Panel();
+            this.dataGridViewFavourites = new System.Windows.Forms.DataGridView();
             this.panelCheckout = new System.Windows.Forms.Panel();
             this.buttonReseedData = new System.Windows.Forms.Button();
             this.buttonViewSuite = new System.Windows.Forms.Button();
-            this.dataGridViewFavourites = new System.Windows.Forms.DataGridView();
+            this.richTextCheckoutBill = new System.Windows.Forms.RichTextBox();
+            this.buttonMakePayment = new System.Windows.Forms.Button();
+            this.labelTotalPayable = new System.Windows.Forms.Label();
+            this.panelPriceDisplay = new System.Windows.Forms.Panel();
             this.panelLeftNavigation.SuspendLayout();
             this.panelTopStrip.SuspendLayout();
             this.panel4.SuspendLayout();
@@ -71,6 +75,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewSuites)).BeginInit();
             this.panelFavourites.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewFavourites)).BeginInit();
+            this.panelCheckout.SuspendLayout();
+            this.panelPriceDisplay.SuspendLayout();
             this.SuspendLayout();
             // 
             // panelLeftNavigation
@@ -413,12 +419,24 @@
             this.panelFavourites.Size = new System.Drawing.Size(1595, 1056);
             this.panelFavourites.TabIndex = 1;
             // 
+            // dataGridViewFavourites
+            // 
+            this.dataGridViewFavourites.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridViewFavourites.Location = new System.Drawing.Point(17, 20);
+            this.dataGridViewFavourites.Name = "dataGridViewFavourites";
+            this.dataGridViewFavourites.RowTemplate.Height = 33;
+            this.dataGridViewFavourites.Size = new System.Drawing.Size(1575, 770);
+            this.dataGridViewFavourites.TabIndex = 1;
+            // 
             // panelCheckout
             // 
             this.panelCheckout.BackColor = System.Drawing.Color.White;
+            this.panelCheckout.Controls.Add(this.buttonMakePayment);
+            this.panelCheckout.Controls.Add(this.panelPriceDisplay);
+            this.panelCheckout.Controls.Add(this.richTextCheckoutBill);
             this.panelCheckout.Location = new System.Drawing.Point(417, 79);
             this.panelCheckout.Name = "panelCheckout";
-            this.panelCheckout.Size = new System.Drawing.Size(1595, 1056);
+            this.panelCheckout.Size = new System.Drawing.Size(1728, 949);
             this.panelCheckout.TabIndex = 1;
             // 
             // buttonReseedData
@@ -429,7 +447,6 @@
             this.buttonReseedData.TabIndex = 6;
             this.buttonReseedData.Text = "Reseed";
             this.buttonReseedData.UseVisualStyleBackColor = true;
-            this.buttonReseedData.Visible = false;
             this.buttonReseedData.Click += new System.EventHandler(this.buttonReseedData_Click);
             // 
             // buttonViewSuite
@@ -446,14 +463,50 @@
             this.buttonViewSuite.UseVisualStyleBackColor = false;
             this.buttonViewSuite.Click += new System.EventHandler(this.buttonViewSuite_Click);
             // 
-            // dataGridViewFavourites
+            // richTextCheckoutBill
             // 
-            this.dataGridViewFavourites.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridViewFavourites.Location = new System.Drawing.Point(17, 20);
-            this.dataGridViewFavourites.Name = "dataGridViewFavourites";
-            this.dataGridViewFavourites.RowTemplate.Height = 33;
-            this.dataGridViewFavourites.Size = new System.Drawing.Size(1575, 770);
-            this.dataGridViewFavourites.TabIndex = 1;
+            this.richTextCheckoutBill.Enabled = false;
+            this.richTextCheckoutBill.Font = new System.Drawing.Font("Consolas", 10.125F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.richTextCheckoutBill.Location = new System.Drawing.Point(17, 20);
+            this.richTextCheckoutBill.Name = "richTextCheckoutBill";
+            this.richTextCheckoutBill.Size = new System.Drawing.Size(1694, 679);
+            this.richTextCheckoutBill.TabIndex = 0;
+            this.richTextCheckoutBill.Text = "";
+            // 
+            // buttonMakePayment
+            // 
+            this.buttonMakePayment.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(35)))), ((int)(((byte)(55)))), ((int)(((byte)(67)))));
+            this.buttonMakePayment.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.buttonMakePayment.Font = new System.Drawing.Font("Arial Narrow", 10.875F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.buttonMakePayment.ForeColor = System.Drawing.Color.White;
+            this.buttonMakePayment.Location = new System.Drawing.Point(1485, 796);
+            this.buttonMakePayment.Name = "buttonMakePayment";
+            this.buttonMakePayment.Size = new System.Drawing.Size(222, 86);
+            this.buttonMakePayment.TabIndex = 15;
+            this.buttonMakePayment.Text = "Make Payment!";
+            this.buttonMakePayment.UseVisualStyleBackColor = false;
+            this.buttonMakePayment.Click += new System.EventHandler(this.buttonMakePayment_Click);
+            // 
+            // labelTotalPayable
+            // 
+            this.labelTotalPayable.AutoSize = true;
+            this.labelTotalPayable.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(183)))), ((int)(((byte)(141)))));
+            this.labelTotalPayable.Font = new System.Drawing.Font("Arial Narrow", 19.875F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labelTotalPayable.ForeColor = System.Drawing.Color.White;
+            this.labelTotalPayable.Location = new System.Drawing.Point(12, 12);
+            this.labelTotalPayable.Name = "labelTotalPayable";
+            this.labelTotalPayable.Size = new System.Drawing.Size(326, 63);
+            this.labelTotalPayable.TabIndex = 0;
+            this.labelTotalPayable.Text = "$124.00 / night";
+            // 
+            // panelPriceDisplay
+            // 
+            this.panelPriceDisplay.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(183)))), ((int)(((byte)(141)))));
+            this.panelPriceDisplay.Controls.Add(this.labelTotalPayable);
+            this.panelPriceDisplay.Location = new System.Drawing.Point(963, 796);
+            this.panelPriceDisplay.Name = "panelPriceDisplay";
+            this.panelPriceDisplay.Size = new System.Drawing.Size(488, 86);
+            this.panelPriceDisplay.TabIndex = 16;
             // 
             // FormMainUI
             // 
@@ -461,10 +514,10 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(2157, 1135);
+            this.Controls.Add(this.panelCheckout);
             this.Controls.Add(this.panelFavourites);
             this.Controls.Add(this.buttonViewSuite);
             this.Controls.Add(this.buttonReseedData);
-            this.Controls.Add(this.panelCheckout);
             this.Controls.Add(this.pictureBoxSmallLogo);
             this.Controls.Add(this.buttonCloseForm);
             this.Controls.Add(this.panel4);
@@ -485,6 +538,9 @@
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewSuites)).EndInit();
             this.panelFavourites.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewFavourites)).EndInit();
+            this.panelCheckout.ResumeLayout(false);
+            this.panelPriceDisplay.ResumeLayout(false);
+            this.panelPriceDisplay.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -524,6 +580,10 @@
         private System.Windows.Forms.Button buttonClearFilters;
         private System.Windows.Forms.Button buttonViewSuite;
         private System.Windows.Forms.DataGridView dataGridViewFavourites;
+        private System.Windows.Forms.RichTextBox richTextCheckoutBill;
+        private System.Windows.Forms.Button buttonMakePayment;
+        private System.Windows.Forms.Panel panelPriceDisplay;
+        private System.Windows.Forms.Label labelTotalPayable;
     }
 }
 

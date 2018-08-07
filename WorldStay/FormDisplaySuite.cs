@@ -83,14 +83,13 @@ namespace WorldStay
                     CheckInDate = dateTimeCheckIn.Value,
                     StayDuration = int.Parse(textBoxStayDuration.Text)
                 });
-            }catch(Exception ex)
-            {
-                MessageBox.Show($"Error: {ex.Message}!");
-            }
-            finally
-            {
+
                 MessageBox.Show("Suite has been added to your cart!");
                 this.Close();
+            }
+            catch(Exception ex)
+            {
+                MessageBox.Show($"Error: {ex.Message}!");
             }
             dbAccess.CloseConnection();
         }

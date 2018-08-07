@@ -74,6 +74,25 @@ namespace WorldStay
                     Console.WriteLine($"Error: {ex.Message}");
                 }
             }
+
+            NegateIsAvailable(ab.SuiteId);
+        }
+
+        public void NegateIsAvailable(int suiteId)
+        {
+            string sql = "Update Suites set Suites.IsAvailable = 'false' where Suites.SuiteId = '" + suiteId+ "'";
+
+            using (SqlCommand command = new SqlCommand(sql, dbConnection))
+            {
+                try
+                {
+                    command.ExecuteNonQuery();
+                }
+                catch (SqlException ex)
+                {
+                    Console.WriteLine($"Error: {ex.Message}");
+                }
+            }
         }
 
         /// <summary>
@@ -247,15 +266,15 @@ namespace WorldStay
             List<DisplayData> dataList = new List<DisplayData>();
             String sql = "";
 
-            if(testNum==0)
-                sql = "Select * From Suites "+
-                             "join Hotels on Suites.HotelId = Hotels.HotelId "+
+            if (testNum == 0)
+                sql = "Select * From Suites " +
+                             "join Hotels on Suites.HotelId = Hotels.HotelId " +
                              "join Countries on Hotels.CountryId = Countries.CountryId";
             else
                 sql = "Select * From Suites " +
                              "join Hotels on Suites.HotelId = Hotels.HotelId " +
-                             "join Countries on Hotels.CountryId = Countries.CountryId "+
-                             "where Suites.SuiteId = "+testNum;
+                             "join Countries on Hotels.CountryId = Countries.CountryId " +
+                             "where Suites.SuiteId = " + testNum;
 
             using (SqlCommand command = new SqlCommand(sql, dbConnection))
             {
@@ -272,7 +291,8 @@ namespace WorldStay
                         NumBathrooms = (int)dataReader["NumberOfBathrooms"],
                         NightlyRate = (int)dataReader["NightlyRate"],
                         Country = (String)dataReader["CountryName"],
-                        ThumbnailURL = (String)dataReader["ThumbnailURL"]
+                        ThumbnailURL = (String)dataReader["ThumbnailURL"],
+                        IsAvailable = (bool)dataReader["IsAvailable"]
 
                     });
                 }
@@ -295,6 +315,31 @@ namespace WorldStay
                 while (dataReader.Read())
                 {
                     dataList.Add((String)dataReader["RoomType"]);
+                }
+                dataReader.Close();
+            }
+            return dataList;
+        }
+
+        /// <summary>
+        /// Using SQL Select, return a List of all active bookings in the database
+        /// </summary>
+        /// <returns>List of Active Bookings</returns>
+        public List<ActiveBooking> returnActiveBookings(int userId)
+        {
+            List<ActiveBooking> dataList = new List<ActiveBooking>();
+            string sql = "Select * from ActiveBookings where UserId = "+userId;
+            using (SqlCommand command = new SqlCommand(sql, dbConnection))
+            {
+                SqlDataReader dataReader = command.ExecuteReader();
+                while (dataReader.Read())
+                {
+                    dataList.Add(new ActiveBooking {
+                        SuiteId = (int)dataReader["SuiteId"],
+                        UserId = (int)dataReader["UserId"],
+                        CheckInDate = (DateTime)dataReader["CheckInDate"],
+                        StayDuration = (int)dataReader["StayDuration"]
+                    });
                 }
                 dataReader.Close();
             }

@@ -17,5 +17,6 @@ namespace WorldStay
         public int NightlyRate { get; set; }
         public String Country { get; set; }
         public String ThumbnailURL { get;set;}
+        public bool IsAvailable { get; set; }
     }
 }
