@@ -6,7 +6,7 @@
     [RoomType] NVARCHAR(20) NOT NULL, 
     [NumberOfBedrooms] INT NOT NULL, 
     [NumberOfBathrooms] INT NOT NULL, 
-    [NightlyRate] FLOAT NOT NULL, 
+    [NightlyRate] INT NOT NULL, 
     [IsAvailable] BIT NOT NULL, 
     [ThumbnailURL] NVARCHAR(20) NOT NULL, 
     [HotelId] INT NOT NULL

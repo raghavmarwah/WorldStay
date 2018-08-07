@@ -13,7 +13,7 @@ namespace WorldStay
         public String RoomType { get; set; }
         public int NumberOfBedrooms { get; set; }
         public int NumberOfBathrooms { get; set; }
-        public float NightlyRate { get; set; }
+        public int NightlyRate { get; set; }
         public bool IsAvailable { get; set; }
         public String Description { get; set; }
         public String ThumbnailURL { get; set; }

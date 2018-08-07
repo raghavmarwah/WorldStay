@@ -120,5 +120,97 @@ namespace WorldStay
                 }
             }
         }
+
+        /// <summary>
+        /// Using SQL Select, return a List of all suites in the database
+        /// </summary>
+        /// <returns>List of suites</returns>
+        public List<DisplayData> GetSuites()
+        {
+            List<DisplayData> dataList = new List<DisplayData>();
+            string sql = "Select * From Suites "+
+                         "join Hotels on Suites.HotelId = Hotels.HotelId "+
+                         "join Countries on Hotels.CountryId = Countries.CountryId";
+            using (SqlCommand command = new SqlCommand(sql, dbConnection))
+            {
+                SqlDataReader dataReader = command.ExecuteReader();
+                while (dataReader.Read())
+                {
+                    dataList.Add(new DisplayData
+                    {
+                        HotelName = (String)dataReader["HotelName"],
+                        RoomType = (String)dataReader["RoomType"],
+                        RoomNumber = (String)dataReader["RoomNumber"],
+                        NumBedrooms = (int)dataReader["NumberOfBedrooms"],
+                        NumBathrooms = (int)dataReader["NumberOfBathrooms"],
+                        NightlyRate = (int)dataReader["NightlyRate"],
+                        Country = (String)dataReader["CountryName"]
+
+                    });
+                }
+                dataReader.Close();
+            }
+            return dataList;
+        }
+
+        /// <summary>
+        /// Using SQL Select, return a List of all room types in the database
+        /// </summary>
+        /// <returns>List of room types</returns>
+        public List<String> GetRoomTypes()
+        {
+            List<String> dataList = new List<String>();
+            string sql = "Select Distinct RoomType from Suites ";
+            using (SqlCommand command = new SqlCommand(sql, dbConnection))
+            {
+                SqlDataReader dataReader = command.ExecuteReader();
+                while (dataReader.Read())
+                {
+                    dataList.Add((String)dataReader["RoomType"]);
+                }
+                dataReader.Close();
+            }
+            return dataList;
+        }
+
+        /// <summary>
+        /// Using SQL Select, return a List of number of bedrooms in the database
+        /// </summary>
+        /// <returns>List of number of bedrooms</returns>
+        public List<int> GetNumberOfBedrooms()
+        {
+            List<int> dataList = new List<int>();
+            string sql = "Select Distinct NumberofBedrooms from Suites ";
+            using (SqlCommand command = new SqlCommand(sql, dbConnection))
+            {
+                SqlDataReader dataReader = command.ExecuteReader();
+                while (dataReader.Read())
+                {
+                    dataList.Add((int)dataReader["NumberOfBedrooms"]);
+                }
+                dataReader.Close();
+            }
+            return dataList;
+        }
+
+        /// <summary>
+        /// Using SQL Select, return a List of number of bathrooms in the database
+        /// </summary>
+        /// <returns>List of number of bathrooms</returns>
+        public List<int> GetNumberOfBathrooms()
+        {
+            List<int> dataList = new List<int>();
+            string sql = "Select Distinct NumberofBathrooms from Suites ";
+            using (SqlCommand command = new SqlCommand(sql, dbConnection))
+            {
+                SqlDataReader dataReader = command.ExecuteReader();
+                while (dataReader.Read())
+                {
+                    dataList.Add((int)dataReader["NumberOfBathrooms"]);
+                }
+                dataReader.Close();
+            }
+            return dataList;
+        }
     }
 }

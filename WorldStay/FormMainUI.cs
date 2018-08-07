@@ -14,9 +14,45 @@ namespace WorldStay
     public partial class FormMainUI : Form
     {
         DatabaseAccess dbAccess = new DatabaseAccess();
+        
+        //global list to store display data
+        List<DisplayData> dataList = new List<DisplayData>();
+
         public FormMainUI()
         {
             InitializeComponent();
+
+            //registering event handlers
+            comboBoxOrderBy.SelectedIndexChanged += ComboBoxOrderBy_SelectedIndexChanged;
+            comboBoxRoomType.SelectedIndexChanged += ComboBoxRoomType_SelectedIndexChanged;
+            comboBoxNumBedrooms.SelectedIndexChanged += ComboBoxNumBedrooms_SelectedIndexChanged;
+            comboBoxNumBathrooms.SelectedIndexChanged += ComboBoxNumBathrooms_SelectedIndexChanged;
+            textBoxNameSearchString.TextChanged += TextBoxNameSearchString_TextChanged;
+        }
+
+        private void ComboBoxNumBathrooms_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            UpdateDataGridViewSuites();
+        }
+
+        private void ComboBoxNumBedrooms_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            UpdateDataGridViewSuites();
+        }
+
+        private void TextBoxNameSearchString_TextChanged(object sender, EventArgs e)
+        {
+            UpdateDataGridViewSuites();
+        }
+
+        private void ComboBoxRoomType_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            UpdateDataGridViewSuites();
+        }
+
+        private void ComboBoxOrderBy_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            UpdateDataGridViewSuites();
         }
 
         private void Form1_Load(object sender, EventArgs e)
@@ -24,6 +60,32 @@ namespace WorldStay
             this.Height = 590;
             this.Width = 1079;
             InitializeDataGridView();
+            FeedDataToDataGridView();
+            comboBoxOrderBy.SelectedIndex= 0;
+            
+            dbAccess.OpenConnection();
+            List<String> roomTypes = dbAccess.GetRoomTypes();
+            List<int> NumberOfBedrooms = dbAccess.GetNumberOfBedrooms();
+            List<int> NumberOfBathrooms = dbAccess.GetNumberOfBathrooms();
+            dbAccess.CloseConnection();
+
+            //filling data in comboBoxRoomTypes
+            comboBoxRoomType.Items.Add("All");
+            foreach (String roomType in roomTypes)
+                comboBoxRoomType.Items.Add(roomType);
+            comboBoxRoomType.SelectedIndex = 0;
+
+            //filling data in comboBoxNumBedrooms
+            comboBoxNumBedrooms.Items.Add("All");
+            foreach (int bedrooms in NumberOfBedrooms)
+                comboBoxNumBedrooms.Items.Add(bedrooms.ToString());
+            comboBoxNumBedrooms.SelectedIndex = 0;
+
+            //filling data in comboBoxNumBathrooms
+            comboBoxNumBathrooms.Items.Add("All");
+            foreach (int bathrooms in NumberOfBathrooms)
+                comboBoxNumBathrooms.Items.Add(bathrooms.ToString());
+            comboBoxNumBathrooms.SelectedIndex = 0;
         }
 
         private void buttonCloseForm_Click(object sender, EventArgs e)
@@ -128,7 +190,7 @@ namespace WorldStay
                         RoomType = splitData[2],
                         NumberOfBedrooms = int.Parse(splitData[3]),
                         NumberOfBathrooms  = int.Parse(splitData[4]),
-                        NightlyRate = float.Parse(splitData[5]),
+                        NightlyRate = int.Parse(splitData[5]),
                         IsAvailable = true,
                         ThumbnailURL = splitData[6],
                         HotelId = int.Parse(splitData[7])
@@ -139,6 +201,9 @@ namespace WorldStay
 
                 //disconnecting from the database
                 dbAccess.CloseConnection();
+
+                //Re-feeding data to dataGridViewSuites
+                FeedDataToDataGridView();
             }
             catch(Exception ex)
             {
@@ -174,6 +239,62 @@ namespace WorldStay
 
             dataGridViewSuites.Columns.Clear();
             dataGridViewSuites.Columns.AddRange(columns);
+
+        }
+
+        /// <summary>
+        /// Adds the data to dataGridViewSuites
+        /// </summary>
+        private void FeedDataToDataGridView()
+        {
+            dbAccess.OpenConnection();
+            dataList = dbAccess.GetSuites();
+            dbAccess.CloseConnection();
+
+            var dataOrderQuery = dataList
+                .OrderBy(p => p.Country)
+                .Select(p => p);
+
+            dataGridViewSuites.Rows.Clear();
+            foreach (DisplayData p in dataOrderQuery)
+            {
+                dataGridViewSuites.Rows.Add(p.HotelName, p.RoomType, p.RoomNumber, p.NumBedrooms, p.NumBathrooms, p.NightlyRate, p.Country);
+            }
+        }
+
+        private void UpdateDataGridViewSuites()
+        {
+            List<DisplayData> filterData = dataList;
+
+            //textBoxNameSearchString
+            if (textBoxNameSearchString.Text.Length > 0)
+                filterData = filterData.Where(p => p.HotelName.ToLower().Contains(textBoxNameSearchString.Text.ToLower())).Select(p => p).ToList();
+
+            //comboBoxRoomType
+            if (comboBoxRoomType.SelectedIndex != 0)
+                filterData = filterData.Where(p => p.RoomType.Equals(comboBoxRoomType.SelectedItem)).Select(p => p).ToList();
+
+            //comboBoxNumBedrooms
+            if (comboBoxNumBedrooms.SelectedIndex != 0)
+                filterData = filterData.Where(p => p.NumBedrooms.ToString().Equals(comboBoxNumBedrooms.SelectedItem)).Select(p => p).ToList();
+
+            //comboBoxNumBathrooms
+            if (comboBoxNumBathrooms.SelectedIndex != 0)
+                filterData = filterData.Where(p => p.NumBathrooms.ToString().Equals(comboBoxNumBathrooms.SelectedItem)).Select(p => p).ToList();
+
+            //comboBoxOrderby
+            if (comboBoxOrderBy.SelectedIndex == 0)
+                filterData = filterData.OrderBy(p => p.Country).Select(p => p).ToList();
+            else if (comboBoxOrderBy.SelectedIndex == 1)
+                filterData = filterData.OrderBy(p => p.NightlyRate).Select(p => p).ToList();
+            else if (comboBoxOrderBy.SelectedIndex == 2)
+                filterData = filterData.OrderByDescending(p => p.NightlyRate).Select(p => p).ToList();
+            
+            dataGridViewSuites.Rows.Clear();
+            foreach (DisplayData p in filterData)
+            {
+                dataGridViewSuites.Rows.Add(p.HotelName, p.RoomType, p.RoomNumber, p.NumBedrooms, p.NumBathrooms, p.NightlyRate, p.Country);
+            }
 
         }
     }

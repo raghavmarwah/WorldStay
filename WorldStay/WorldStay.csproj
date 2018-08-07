@@ -48,6 +48,7 @@
   <ItemGroup>
     <Compile Include="Country.cs" />
     <Compile Include="DatabaseAccess.cs" />
+    <Compile Include="DisplayData.cs" />
     <Compile Include="FormMainUI.cs">
       <SubType>Form</SubType>
     </Compile>

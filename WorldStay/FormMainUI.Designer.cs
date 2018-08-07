@@ -45,11 +45,21 @@
             this.buttonCloseForm = new System.Windows.Forms.Button();
             this.pictureBoxSmallLogo = new System.Windows.Forms.PictureBox();
             this.panelSearch = new System.Windows.Forms.Panel();
+            this.dataGridViewSuites = new System.Windows.Forms.DataGridView();
             this.panelFavourites = new System.Windows.Forms.Panel();
             this.panelCheckout = new System.Windows.Forms.Panel();
             this.panelProfile = new System.Windows.Forms.Panel();
             this.buttonReseedData = new System.Windows.Forms.Button();
-            this.dataGridViewSuites = new System.Windows.Forms.DataGridView();
+            this.labelOrderBy = new System.Windows.Forms.Label();
+            this.comboBoxOrderBy = new System.Windows.Forms.ComboBox();
+            this.labelRoomType = new System.Windows.Forms.Label();
+            this.comboBoxRoomType = new System.Windows.Forms.ComboBox();
+            this.labelSearchByName = new System.Windows.Forms.Label();
+            this.textBoxNameSearchString = new System.Windows.Forms.TextBox();
+            this.labelNumBedrooms = new System.Windows.Forms.Label();
+            this.labelNumBathrooms = new System.Windows.Forms.Label();
+            this.comboBoxNumBedrooms = new System.Windows.Forms.ComboBox();
+            this.comboBoxNumBathrooms = new System.Windows.Forms.ComboBox();
             this.panelLeftNavigation.SuspendLayout();
             this.panelTopStrip.SuspendLayout();
             this.panel4.SuspendLayout();
@@ -251,11 +261,30 @@
             // panelSearch
             // 
             this.panelSearch.BackColor = System.Drawing.Color.White;
+            this.panelSearch.Controls.Add(this.comboBoxNumBathrooms);
+            this.panelSearch.Controls.Add(this.comboBoxNumBedrooms);
+            this.panelSearch.Controls.Add(this.labelNumBathrooms);
+            this.panelSearch.Controls.Add(this.labelNumBedrooms);
+            this.panelSearch.Controls.Add(this.textBoxNameSearchString);
+            this.panelSearch.Controls.Add(this.labelSearchByName);
+            this.panelSearch.Controls.Add(this.comboBoxRoomType);
+            this.panelSearch.Controls.Add(this.labelRoomType);
+            this.panelSearch.Controls.Add(this.comboBoxOrderBy);
+            this.panelSearch.Controls.Add(this.labelOrderBy);
             this.panelSearch.Controls.Add(this.dataGridViewSuites);
             this.panelSearch.Location = new System.Drawing.Point(417, 79);
             this.panelSearch.Name = "panelSearch";
             this.panelSearch.Size = new System.Drawing.Size(1595, 1056);
             this.panelSearch.TabIndex = 5;
+            // 
+            // dataGridViewSuites
+            // 
+            this.dataGridViewSuites.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridViewSuites.Location = new System.Drawing.Point(17, 20);
+            this.dataGridViewSuites.Name = "dataGridViewSuites";
+            this.dataGridViewSuites.RowTemplate.Height = 33;
+            this.dataGridViewSuites.Size = new System.Drawing.Size(1551, 770);
+            this.dataGridViewSuites.TabIndex = 0;
             // 
             // panelFavourites
             // 
@@ -292,14 +321,93 @@
             this.buttonReseedData.Visible = false;
             this.buttonReseedData.Click += new System.EventHandler(this.buttonReseedData_Click);
             // 
-            // dataGridViewSuites
+            // labelOrderBy
             // 
-            this.dataGridViewSuites.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridViewSuites.Location = new System.Drawing.Point(17, 20);
-            this.dataGridViewSuites.Name = "dataGridViewSuites";
-            this.dataGridViewSuites.RowTemplate.Height = 33;
-            this.dataGridViewSuites.Size = new System.Drawing.Size(1551, 770);
-            this.dataGridViewSuites.TabIndex = 0;
+            this.labelOrderBy.AutoSize = true;
+            this.labelOrderBy.Location = new System.Drawing.Point(12, 842);
+            this.labelOrderBy.Name = "labelOrderBy";
+            this.labelOrderBy.Size = new System.Drawing.Size(103, 25);
+            this.labelOrderBy.TabIndex = 1;
+            this.labelOrderBy.Text = "Order By:";
+            // 
+            // comboBoxOrderBy
+            // 
+            this.comboBoxOrderBy.FormattingEnabled = true;
+            this.comboBoxOrderBy.Items.AddRange(new object[] {
+            "Country",
+            "Price (Low to High)",
+            "Price (High to Low)"});
+            this.comboBoxOrderBy.Location = new System.Drawing.Point(134, 839);
+            this.comboBoxOrderBy.Name = "comboBoxOrderBy";
+            this.comboBoxOrderBy.Size = new System.Drawing.Size(308, 33);
+            this.comboBoxOrderBy.TabIndex = 2;
+            // 
+            // labelRoomType
+            // 
+            this.labelRoomType.AutoSize = true;
+            this.labelRoomType.Location = new System.Drawing.Point(12, 924);
+            this.labelRoomType.Name = "labelRoomType";
+            this.labelRoomType.Size = new System.Drawing.Size(128, 25);
+            this.labelRoomType.TabIndex = 3;
+            this.labelRoomType.Text = "Room Type:";
+            // 
+            // comboBoxRoomType
+            // 
+            this.comboBoxRoomType.FormattingEnabled = true;
+            this.comboBoxRoomType.Location = new System.Drawing.Point(162, 930);
+            this.comboBoxRoomType.Name = "comboBoxRoomType";
+            this.comboBoxRoomType.Size = new System.Drawing.Size(339, 33);
+            this.comboBoxRoomType.TabIndex = 4;
+            // 
+            // labelSearchByName
+            // 
+            this.labelSearchByName.AutoSize = true;
+            this.labelSearchByName.Location = new System.Drawing.Point(520, 842);
+            this.labelSearchByName.Name = "labelSearchByName";
+            this.labelSearchByName.Size = new System.Drawing.Size(86, 25);
+            this.labelSearchByName.TabIndex = 5;
+            this.labelSearchByName.Text = "Search:";
+            // 
+            // textBoxNameSearchString
+            // 
+            this.textBoxNameSearchString.Location = new System.Drawing.Point(624, 839);
+            this.textBoxNameSearchString.Name = "textBoxNameSearchString";
+            this.textBoxNameSearchString.Size = new System.Drawing.Size(472, 31);
+            this.textBoxNameSearchString.TabIndex = 6;
+            // 
+            // labelNumBedrooms
+            // 
+            this.labelNumBedrooms.AutoSize = true;
+            this.labelNumBedrooms.Location = new System.Drawing.Point(582, 933);
+            this.labelNumBedrooms.Name = "labelNumBedrooms";
+            this.labelNumBedrooms.Size = new System.Drawing.Size(121, 25);
+            this.labelNumBedrooms.TabIndex = 7;
+            this.labelNumBedrooms.Text = "Bedrooms: ";
+            // 
+            // labelNumBathrooms
+            // 
+            this.labelNumBathrooms.AutoSize = true;
+            this.labelNumBathrooms.Location = new System.Drawing.Point(975, 924);
+            this.labelNumBathrooms.Name = "labelNumBathrooms";
+            this.labelNumBathrooms.Size = new System.Drawing.Size(127, 25);
+            this.labelNumBathrooms.TabIndex = 8;
+            this.labelNumBathrooms.Text = "Bathrooms: ";
+            // 
+            // comboBoxNumBedrooms
+            // 
+            this.comboBoxNumBedrooms.FormattingEnabled = true;
+            this.comboBoxNumBedrooms.Location = new System.Drawing.Point(715, 938);
+            this.comboBoxNumBedrooms.Name = "comboBoxNumBedrooms";
+            this.comboBoxNumBedrooms.Size = new System.Drawing.Size(115, 33);
+            this.comboBoxNumBedrooms.TabIndex = 9;
+            // 
+            // comboBoxNumBathrooms
+            // 
+            this.comboBoxNumBathrooms.FormattingEnabled = true;
+            this.comboBoxNumBathrooms.Location = new System.Drawing.Point(1121, 930);
+            this.comboBoxNumBathrooms.Name = "comboBoxNumBathrooms";
+            this.comboBoxNumBathrooms.Size = new System.Drawing.Size(115, 33);
+            this.comboBoxNumBathrooms.TabIndex = 10;
             // 
             // FormMainUI
             // 
@@ -327,6 +435,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxTopLogo)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxSmallLogo)).EndInit();
             this.panelSearch.ResumeLayout(false);
+            this.panelSearch.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewSuites)).EndInit();
             this.ResumeLayout(false);
 
@@ -355,6 +464,16 @@
         private System.Windows.Forms.Panel panelProfile;
         private System.Windows.Forms.Button buttonReseedData;
         private System.Windows.Forms.DataGridView dataGridViewSuites;
+        private System.Windows.Forms.Label labelOrderBy;
+        private System.Windows.Forms.ComboBox comboBoxOrderBy;
+        private System.Windows.Forms.ComboBox comboBoxRoomType;
+        private System.Windows.Forms.Label labelRoomType;
+        private System.Windows.Forms.TextBox textBoxNameSearchString;
+        private System.Windows.Forms.Label labelSearchByName;
+        private System.Windows.Forms.ComboBox comboBoxNumBathrooms;
+        private System.Windows.Forms.ComboBox comboBoxNumBedrooms;
+        private System.Windows.Forms.Label labelNumBathrooms;
+        private System.Windows.Forms.Label labelNumBedrooms;
     }
 }
 
