@@ -73,6 +73,7 @@ namespace WorldStay
 
         private void buttonLogin_Click(object sender, EventArgs e)
         {
+            FetchUserList();
             var queryLoginCheck = userList
                 .Where(r => r.UserName.Trim().Equals(textBoxUsername.Text) && r.Password.Trim().Equals(textBoxPassword.Text))
                 .Select(r => r).ToList();

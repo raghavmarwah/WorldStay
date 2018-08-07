@@ -16,7 +16,7 @@ namespace WorldStay
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new FormMainUI(1));
+            Application.Run(new FormUserLogin());
         }
     }
 }

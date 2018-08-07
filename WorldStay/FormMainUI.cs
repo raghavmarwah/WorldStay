@@ -155,6 +155,7 @@ namespace WorldStay
             HideAllNavIndicatorsAndPanels();
             navIndicatorProfile.Visible = true;
             buttonViewSuite.Visible = false;
+            MessageBox.Show("WIP (Work In Progress)");
         }
 
         private void buttonReseedData_Click(object sender, EventArgs e)
