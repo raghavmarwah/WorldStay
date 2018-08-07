@@ -59,9 +59,9 @@
             this.dataGridViewSuites = new System.Windows.Forms.DataGridView();
             this.panelFavourites = new System.Windows.Forms.Panel();
             this.panelCheckout = new System.Windows.Forms.Panel();
-            this.panelProfile = new System.Windows.Forms.Panel();
             this.buttonReseedData = new System.Windows.Forms.Button();
             this.buttonViewSuite = new System.Windows.Forms.Button();
+            this.dataGridViewFavourites = new System.Windows.Forms.DataGridView();
             this.panelLeftNavigation.SuspendLayout();
             this.panelTopStrip.SuspendLayout();
             this.panel4.SuspendLayout();
@@ -69,6 +69,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxSmallLogo)).BeginInit();
             this.panelSearch.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewSuites)).BeginInit();
+            this.panelFavourites.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridViewFavourites)).BeginInit();
             this.SuspendLayout();
             // 
             // panelLeftNavigation
@@ -405,6 +407,7 @@
             // panelFavourites
             // 
             this.panelFavourites.BackColor = System.Drawing.Color.White;
+            this.panelFavourites.Controls.Add(this.dataGridViewFavourites);
             this.panelFavourites.Location = new System.Drawing.Point(417, 79);
             this.panelFavourites.Name = "panelFavourites";
             this.panelFavourites.Size = new System.Drawing.Size(1595, 1056);
@@ -417,14 +420,6 @@
             this.panelCheckout.Name = "panelCheckout";
             this.panelCheckout.Size = new System.Drawing.Size(1595, 1056);
             this.panelCheckout.TabIndex = 1;
-            // 
-            // panelProfile
-            // 
-            this.panelProfile.BackColor = System.Drawing.Color.White;
-            this.panelProfile.Location = new System.Drawing.Point(417, 79);
-            this.panelProfile.Name = "panelProfile";
-            this.panelProfile.Size = new System.Drawing.Size(1595, 1056);
-            this.panelProfile.TabIndex = 1;
             // 
             // buttonReseedData
             // 
@@ -451,23 +446,31 @@
             this.buttonViewSuite.UseVisualStyleBackColor = false;
             this.buttonViewSuite.Click += new System.EventHandler(this.buttonViewSuite_Click);
             // 
+            // dataGridViewFavourites
+            // 
+            this.dataGridViewFavourites.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridViewFavourites.Location = new System.Drawing.Point(17, 20);
+            this.dataGridViewFavourites.Name = "dataGridViewFavourites";
+            this.dataGridViewFavourites.RowTemplate.Height = 33;
+            this.dataGridViewFavourites.Size = new System.Drawing.Size(1575, 770);
+            this.dataGridViewFavourites.TabIndex = 1;
+            // 
             // FormMainUI
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(12F, 25F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(2157, 1135);
-            this.Controls.Add(this.buttonViewSuite);
-            this.Controls.Add(this.panelSearch);
-            this.Controls.Add(this.buttonReseedData);
-            this.Controls.Add(this.panelProfile);
-            this.Controls.Add(this.panelCheckout);
             this.Controls.Add(this.panelFavourites);
+            this.Controls.Add(this.buttonViewSuite);
+            this.Controls.Add(this.buttonReseedData);
+            this.Controls.Add(this.panelCheckout);
             this.Controls.Add(this.pictureBoxSmallLogo);
             this.Controls.Add(this.buttonCloseForm);
             this.Controls.Add(this.panel4);
             this.Controls.Add(this.panelTopStrip);
             this.Controls.Add(this.panelLeftNavigation);
+            this.Controls.Add(this.panelSearch);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "FormMainUI";
             this.Text = "Form1";
@@ -480,6 +483,8 @@
             this.panelSearch.ResumeLayout(false);
             this.panelSearch.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewSuites)).EndInit();
+            this.panelFavourites.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridViewFavourites)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -504,7 +509,6 @@
         private System.Windows.Forms.Panel panelSearch;
         private System.Windows.Forms.Panel panelFavourites;
         private System.Windows.Forms.Panel panelCheckout;
-        private System.Windows.Forms.Panel panelProfile;
         private System.Windows.Forms.Button buttonReseedData;
         private System.Windows.Forms.DataGridView dataGridViewSuites;
         private System.Windows.Forms.Label labelOrderBy;
@@ -519,6 +523,7 @@
         private System.Windows.Forms.Label labelNumBedrooms;
         private System.Windows.Forms.Button buttonClearFilters;
         private System.Windows.Forms.Button buttonViewSuite;
+        private System.Windows.Forms.DataGridView dataGridViewFavourites;
     }
 }
 

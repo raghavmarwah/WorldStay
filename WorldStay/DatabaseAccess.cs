@@ -223,12 +223,12 @@ namespace WorldStay
         /// Using SQL Select, return a List of all suites in the database
         /// </summary>
         /// <returns>List of suites</returns>
-        public List<DisplayData> GetSuites(int suiteId)
+        public List<DisplayData> GetSuites(int testNum)
         {
             List<DisplayData> dataList = new List<DisplayData>();
             String sql = "";
 
-            if(suiteId==0)
+            if(testNum==0)
                 sql = "Select * From Suites "+
                              "join Hotels on Suites.HotelId = Hotels.HotelId "+
                              "join Countries on Hotels.CountryId = Countries.CountryId";
@@ -236,7 +236,7 @@ namespace WorldStay
                 sql = "Select * From Suites " +
                              "join Hotels on Suites.HotelId = Hotels.HotelId " +
                              "join Countries on Hotels.CountryId = Countries.CountryId "+
-                             "where Suites.SuiteId = "+suiteId;
+                             "where Suites.SuiteId = "+testNum;
 
             using (SqlCommand command = new SqlCommand(sql, dbConnection))
             {

@@ -17,6 +17,11 @@ namespace WorldStay
         
         //global list to store display data
         List<DisplayData> dataList = new List<DisplayData>();
+        //global list to store display data
+        List<DisplayData> favouriteSuitesList = new List<DisplayData>();
+
+        //global int to check buttonView call on which panel
+        int buttonViewNum = 1;
 
         //global user id
         int userId;
@@ -67,6 +72,8 @@ namespace WorldStay
             InitializeDataGridView();
             FeedDataToDataGridView();
             comboBoxOrderBy.SelectedIndex= 0;
+
+            panelSearch.BringToFront();
             
             dbAccess.OpenConnection();
             List<String> roomTypes = dbAccess.GetRoomTypes();
@@ -110,7 +117,6 @@ namespace WorldStay
             panelSearch.Visible = false;
             panelFavourites.Visible = false;
             panelCheckout.Visible = false;
-            panelProfile.Visible = false;
         }
 
         private void buttonNavSearch_Click(object sender, EventArgs e)
@@ -118,13 +124,16 @@ namespace WorldStay
             HideAllNavIndicatorsAndPanels();
             navIndicatorSearch.Visible = true;
             panelSearch.Visible = true;
+            buttonViewNum = 1;
         }
 
         private void buttonNavFavourites_Click(object sender, EventArgs e)
         {
             HideAllNavIndicatorsAndPanels();
+            FeedDataToDataGridView();
             navIndicatorFavourites.Visible = true;
             panelFavourites.Visible = true;
+            buttonViewNum = 2;
         }
 
         private void buttonNavCheckout_Click(object sender, EventArgs e)
@@ -138,7 +147,6 @@ namespace WorldStay
         {
             HideAllNavIndicatorsAndPanels();
             navIndicatorProfile.Visible = true;
-            panelProfile.Visible = true;
         }
 
         private void buttonReseedData_Click(object sender, EventArgs e)
@@ -222,6 +230,7 @@ namespace WorldStay
         private void InitializeDataGridView()
         {
             //setting attributes
+            //dataGridViewSuites
             dataGridViewSuites.ReadOnly = true;
             dataGridViewSuites.AllowUserToAddRows = false;
             dataGridViewSuites.AllowUserToDeleteRows = false;
@@ -232,9 +241,32 @@ namespace WorldStay
             dataGridViewSuites.MultiSelect = false;
             dataGridViewSuites.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
 
+            //dataGridViewFavourites
+            dataGridViewFavourites.ReadOnly = true;
+            dataGridViewFavourites.AllowUserToAddRows = false;
+            dataGridViewFavourites.AllowUserToDeleteRows = false;
+            dataGridViewFavourites.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.AllCells;
+            dataGridViewFavourites.RowHeadersWidth = 40;
+            dataGridViewFavourites.ColumnHeadersDefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewFavourites.DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewFavourites.MultiSelect = false;
+            dataGridViewFavourites.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
+
             //Defining columns to add to the DataGridView
-            //Imp DataGridViewTextBOoxColumn not DataGridViewColumn
-            DataGridViewTextBoxColumn[] columns = new DataGridViewTextBoxColumn[] {
+            //Imp DataGridViewTextBoxColumn not DataGridViewColumn
+            //dataGridViewSuites
+            DataGridViewTextBoxColumn[] columnsSuites = new DataGridViewTextBoxColumn[] {
+                new DataGridViewTextBoxColumn() {Name = "Suite Id" },
+                new DataGridViewTextBoxColumn() {Name = "Hotel Name" },
+                new DataGridViewTextBoxColumn() { Name = "Room Type" },
+                new DataGridViewTextBoxColumn() { Name = "Room Number" },
+                new DataGridViewTextBoxColumn() { Name = "Bedrooms" },
+                new DataGridViewTextBoxColumn() { Name = "Bathrooms" },
+                new DataGridViewTextBoxColumn() { Name = "Nightly Rate" },
+                new DataGridViewTextBoxColumn() { Name = "Country" }
+                };
+            //dataGridViewFavourites
+            DataGridViewTextBoxColumn[] columnsFavourites = new DataGridViewTextBoxColumn[] {
                 new DataGridViewTextBoxColumn() {Name = "Suite Id" },
                 new DataGridViewTextBoxColumn() {Name = "Hotel Name" },
                 new DataGridViewTextBoxColumn() { Name = "Room Type" },
@@ -245,8 +277,12 @@ namespace WorldStay
                 new DataGridViewTextBoxColumn() { Name = "Country" }
                 };
 
+
             dataGridViewSuites.Columns.Clear();
-            dataGridViewSuites.Columns.AddRange(columns);
+            dataGridViewSuites.Columns.AddRange(columnsSuites);
+
+            dataGridViewFavourites.Columns.Clear();
+            dataGridViewFavourites.Columns.AddRange(columnsFavourites);
 
         }
 
@@ -256,17 +292,32 @@ namespace WorldStay
         private void FeedDataToDataGridView()
         {
             dbAccess.OpenConnection();
-            dataList = dbAccess.GetSuites(0);
+            dataList = dbAccess.GetSuites(0).OrderBy(p => p.SuiteId).Select(p => p).ToList();
             dbAccess.CloseConnection();
 
-            var dataOrderQuery = dataList
-                .OrderBy(p => p.SuiteId)
-                .Select(p => p);
-
+            dbAccess.OpenConnection();
+            favouriteSuitesList = dbAccess.GetSuites(0).OrderBy(p => p.SuiteId).Select(p => p).ToList();
+            dbAccess.CloseConnection();
+            
             dataGridViewSuites.Rows.Clear();
-            foreach (DisplayData p in dataOrderQuery)
+            dataGridViewFavourites.Rows.Clear();
+
+            foreach (DisplayData p in dataList)
             {
                 dataGridViewSuites.Rows.Add(p.SuiteId, p.HotelName, p.RoomType, p.RoomNumber, p.NumBedrooms, p.NumBathrooms, p.NightlyRate, p.Country);
+            }
+
+            foreach (DisplayData p in favouriteSuitesList)
+            {
+                dbAccess.OpenConnection();
+                if(dbAccess.CheckInFavourites(new Favourite
+                {
+                    UserId = userId,
+                    SuiteId = p.SuiteId
+                }))
+                    dataGridViewFavourites.Rows.Add(p.SuiteId, p.HotelName, p.RoomType, p.RoomNumber, p.NumBedrooms, p.NumBathrooms, p.NightlyRate, p.Country);
+
+                dbAccess.CloseConnection();
             }
         }
 
@@ -324,9 +375,18 @@ namespace WorldStay
 
         private void buttonViewSuite_Click(object sender, EventArgs e)
         {
-            String suiteId = dataGridViewSuites.SelectedRows[0].Cells[0].Value.ToString();
-            FormDisplaySuite formObject = new FormDisplaySuite(int.Parse(suiteId), userId);
-            formObject.Show();
+            if (buttonViewNum == 1)
+            {
+                String suiteId = dataGridViewSuites.SelectedRows[0].Cells[0].Value.ToString();
+                FormDisplaySuite formObject = new FormDisplaySuite(int.Parse(suiteId), userId);
+                formObject.Show();
+            }
+            else
+            {
+                String suiteId = dataGridViewFavourites.SelectedRows[0].Cells[0].Value.ToString();
+                FormDisplaySuite formObject = new FormDisplaySuite(int.Parse(suiteId), userId);
+                formObject.Show();
+            }
         }
     }
 }
