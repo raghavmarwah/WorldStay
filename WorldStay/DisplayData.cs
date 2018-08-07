@@ -8,6 +8,7 @@ namespace WorldStay
 {
     class DisplayData
     {
+        public int SuiteId { get; set; }
         public String HotelName { get; set; }
         public String RoomType { get; set; }
         public String RoomNumber { get; set; }
@@ -15,5 +16,6 @@ namespace WorldStay
         public int NumBathrooms { get; set; }
         public int NightlyRate { get; set; }
         public String Country { get; set; }
+        public String ThumbnailURL { get;set;}
     }
 }

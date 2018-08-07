@@ -125,12 +125,21 @@ namespace WorldStay
         /// Using SQL Select, return a List of all suites in the database
         /// </summary>
         /// <returns>List of suites</returns>
-        public List<DisplayData> GetSuites()
+        public List<DisplayData> GetSuites(int suiteId)
         {
             List<DisplayData> dataList = new List<DisplayData>();
-            string sql = "Select * From Suites "+
-                         "join Hotels on Suites.HotelId = Hotels.HotelId "+
-                         "join Countries on Hotels.CountryId = Countries.CountryId";
+            String sql = "";
+
+            if(suiteId==0)
+                sql = "Select * From Suites "+
+                             "join Hotels on Suites.HotelId = Hotels.HotelId "+
+                             "join Countries on Hotels.CountryId = Countries.CountryId";
+            else
+                sql = "Select * From Suites " +
+                             "join Hotels on Suites.HotelId = Hotels.HotelId " +
+                             "join Countries on Hotels.CountryId = Countries.CountryId "+
+                             "where Suites.SuiteId = "+suiteId;
+
             using (SqlCommand command = new SqlCommand(sql, dbConnection))
             {
                 SqlDataReader dataReader = command.ExecuteReader();
@@ -138,13 +147,15 @@ namespace WorldStay
                 {
                     dataList.Add(new DisplayData
                     {
+                        SuiteId = (int)dataReader["SuiteId"],
                         HotelName = (String)dataReader["HotelName"],
                         RoomType = (String)dataReader["RoomType"],
                         RoomNumber = (String)dataReader["RoomNumber"],
                         NumBedrooms = (int)dataReader["NumberOfBedrooms"],
                         NumBathrooms = (int)dataReader["NumberOfBathrooms"],
                         NightlyRate = (int)dataReader["NightlyRate"],
-                        Country = (String)dataReader["CountryName"]
+                        Country = (String)dataReader["CountryName"],
+                        ThumbnailURL = (String)dataReader["ThumbnailURL"]
 
                     });
                 }

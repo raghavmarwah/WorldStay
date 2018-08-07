@@ -374,6 +374,7 @@
             this.comboBoxOrderBy.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.comboBoxOrderBy.FormattingEnabled = true;
             this.comboBoxOrderBy.Items.AddRange(new object[] {
+            "Suite Id",
             "Country",
             "Price (Low to High)",
             "Price (High to Low)"});
@@ -398,7 +399,7 @@
             this.dataGridViewSuites.Location = new System.Drawing.Point(17, 20);
             this.dataGridViewSuites.Name = "dataGridViewSuites";
             this.dataGridViewSuites.RowTemplate.Height = 33;
-            this.dataGridViewSuites.Size = new System.Drawing.Size(1551, 770);
+            this.dataGridViewSuites.Size = new System.Drawing.Size(1575, 770);
             this.dataGridViewSuites.TabIndex = 0;
             // 
             // panelFavourites
@@ -442,12 +443,13 @@
             this.buttonViewSuite.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.buttonViewSuite.Font = new System.Drawing.Font("Arial Narrow", 10.875F, System.Drawing.FontStyle.Bold);
             this.buttonViewSuite.ForeColor = System.Drawing.Color.White;
-            this.buttonViewSuite.Location = new System.Drawing.Point(2012, 799);
+            this.buttonViewSuite.Location = new System.Drawing.Point(2026, 799);
             this.buttonViewSuite.Name = "buttonViewSuite";
             this.buttonViewSuite.Size = new System.Drawing.Size(119, 70);
             this.buttonViewSuite.TabIndex = 7;
             this.buttonViewSuite.Text = "View>";
             this.buttonViewSuite.UseVisualStyleBackColor = false;
+            this.buttonViewSuite.Click += new System.EventHandler(this.buttonViewSuite_Click);
             // 
             // FormMainUI
             // 

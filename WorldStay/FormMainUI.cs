@@ -224,10 +224,13 @@ namespace WorldStay
             dataGridViewSuites.RowHeadersWidth = 40;
             dataGridViewSuites.ColumnHeadersDefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleLeft;
             dataGridViewSuites.DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewSuites.MultiSelect = false;
+            dataGridViewSuites.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
 
             //Defining columns to add to the DataGridView
             //Imp DataGridViewTextBOoxColumn not DataGridViewColumn
             DataGridViewTextBoxColumn[] columns = new DataGridViewTextBoxColumn[] {
+                new DataGridViewTextBoxColumn() {Name = "Suite Id" },
                 new DataGridViewTextBoxColumn() {Name = "Hotel Name" },
                 new DataGridViewTextBoxColumn() { Name = "Room Type" },
                 new DataGridViewTextBoxColumn() { Name = "Room Number" },
@@ -248,17 +251,17 @@ namespace WorldStay
         private void FeedDataToDataGridView()
         {
             dbAccess.OpenConnection();
-            dataList = dbAccess.GetSuites();
+            dataList = dbAccess.GetSuites(0);
             dbAccess.CloseConnection();
 
             var dataOrderQuery = dataList
-                .OrderBy(p => p.Country)
+                .OrderBy(p => p.SuiteId)
                 .Select(p => p);
 
             dataGridViewSuites.Rows.Clear();
             foreach (DisplayData p in dataOrderQuery)
             {
-                dataGridViewSuites.Rows.Add(p.HotelName, p.RoomType, p.RoomNumber, p.NumBedrooms, p.NumBathrooms, p.NightlyRate, p.Country);
+                dataGridViewSuites.Rows.Add(p.SuiteId, p.HotelName, p.RoomType, p.RoomNumber, p.NumBedrooms, p.NumBathrooms, p.NightlyRate, p.Country);
             }
         }
 
@@ -284,16 +287,18 @@ namespace WorldStay
 
             //comboBoxOrderby
             if (comboBoxOrderBy.SelectedIndex == 0)
-                filterData = filterData.OrderBy(p => p.Country).Select(p => p).ToList();
+                filterData = filterData.OrderBy(p => p.SuiteId).Select(p => p).ToList();
             else if (comboBoxOrderBy.SelectedIndex == 1)
-                filterData = filterData.OrderBy(p => p.NightlyRate).Select(p => p).ToList();
+                filterData = filterData.OrderBy(p => p.Country).Select(p => p).ToList();
             else if (comboBoxOrderBy.SelectedIndex == 2)
+                filterData = filterData.OrderBy(p => p.NightlyRate).Select(p => p).ToList();
+            else if (comboBoxOrderBy.SelectedIndex == 3)
                 filterData = filterData.OrderByDescending(p => p.NightlyRate).Select(p => p).ToList();
             
             dataGridViewSuites.Rows.Clear();
             foreach (DisplayData p in filterData)
             {
-                dataGridViewSuites.Rows.Add(p.HotelName, p.RoomType, p.RoomNumber, p.NumBedrooms, p.NumBathrooms, p.NightlyRate, p.Country);
+                dataGridViewSuites.Rows.Add(p.SuiteId, p.HotelName, p.RoomType, p.RoomNumber, p.NumBedrooms, p.NumBathrooms, p.NightlyRate, p.Country);
             }
 
         }
@@ -310,6 +315,13 @@ namespace WorldStay
             comboBoxNumBathrooms.SelectedIndex = 0;
             comboBoxRoomType.SelectedIndex = 0;
             comboBoxOrderBy.SelectedIndex = 0;
+        }
+
+        private void buttonViewSuite_Click(object sender, EventArgs e)
+        {
+            String suiteId = dataGridViewSuites.SelectedRows[0].Cells[0].Value.ToString();
+            FormDisplaySuite formObject = new FormDisplaySuite(int.Parse(suiteId));
+            formObject.Show();
         }
     }
 }
