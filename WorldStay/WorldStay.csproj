@@ -46,6 +46,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="ActiveBooking.cs" />
     <Compile Include="Country.cs" />
     <Compile Include="DatabaseAccess.cs" />
     <Compile Include="DisplayData.cs" />

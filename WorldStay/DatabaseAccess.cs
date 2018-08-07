@@ -55,6 +55,28 @@ namespace WorldStay
         }
 
         /// <summary>
+        /// Inserts a new booking to the database
+        /// </summary>
+        /// <param name="ab">ActiveBooking Object</param>
+        public void ConfirmBooking(ActiveBooking ab)
+        {
+            string sql = "Insert Into ActiveBookings (UserId, SuiteId, CheckInDate, StayDuration) Values " +
+                $"('{ab.UserId}', '{ab.SuiteId}', '{ab.CheckInDate}', '{ab.StayDuration}')";
+
+            using (SqlCommand command = new SqlCommand(sql, dbConnection))
+            {
+                try
+                {
+                    command.ExecuteNonQuery();
+                }
+                catch (SqlException ex)
+                {
+                    Console.WriteLine($"Error: {ex.Message}");
+                }
+            }
+        }
+
+        /// <summary>
         /// Inserts a new hotel to the database
         /// </summary>
         /// <param name="h">Hotel Object</param>
@@ -104,9 +126,6 @@ namespace WorldStay
         /// <param name="f">Favourite Object</param>
         public void AddToFavourites(Favourite f)
         {
-            /*if (CheckInFavourites(f))
-                return;*/
-
             string sql = "Insert Into Favourites (UserId, SuiteId) Values " +
                 $"('{f.UserId}', '{f.SuiteId}')";
 

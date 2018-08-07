@@ -70,7 +70,8 @@ namespace WorldStay
             this.Height = 590;
             this.Width = 1079;
             InitializeDataGridView();
-            FeedDataToDataGridView();
+            FeedDataToDataGridViewSuites();
+            FeedDataToDataGridViewFavourites();
             comboBoxOrderBy.SelectedIndex= 0;
 
             panelSearch.BringToFront();
@@ -130,9 +131,9 @@ namespace WorldStay
         private void buttonNavFavourites_Click(object sender, EventArgs e)
         {
             HideAllNavIndicatorsAndPanels();
-            FeedDataToDataGridView();
             navIndicatorFavourites.Visible = true;
             panelFavourites.Visible = true;
+            FeedDataToDataGridViewFavourites();
             buttonViewNum = 2;
         }
 
@@ -216,7 +217,8 @@ namespace WorldStay
                 dbAccess.CloseConnection();
 
                 //Re-feeding data to dataGridViewSuites
-                FeedDataToDataGridView();
+                FeedDataToDataGridViewSuites();
+                FeedDataToDataGridViewFavourites();
             }
             catch(Exception ex)
             {
@@ -289,28 +291,38 @@ namespace WorldStay
         /// <summary>
         /// Adds the data to dataGridViewSuites
         /// </summary>
-        private void FeedDataToDataGridView()
+        private void FeedDataToDataGridViewSuites()
         {
+            dataGridViewSuites.RowHeadersWidthSizeMode = DataGridViewRowHeadersWidthSizeMode.DisableResizing;
+            dataGridViewSuites.RowHeadersVisible = false;
             dbAccess.OpenConnection();
             dataList = dbAccess.GetSuites(0).OrderBy(p => p.SuiteId).Select(p => p).ToList();
             dbAccess.CloseConnection();
-
-            dbAccess.OpenConnection();
-            favouriteSuitesList = dbAccess.GetSuites(0).OrderBy(p => p.SuiteId).Select(p => p).ToList();
-            dbAccess.CloseConnection();
-            
             dataGridViewSuites.Rows.Clear();
-            dataGridViewFavourites.Rows.Clear();
 
             foreach (DisplayData p in dataList)
             {
                 dataGridViewSuites.Rows.Add(p.SuiteId, p.HotelName, p.RoomType, p.RoomNumber, p.NumBedrooms, p.NumBathrooms, p.NightlyRate, p.Country);
             }
+            dataGridViewSuites.RowHeadersVisible = true;
+        }
+
+        /// <summary>
+        /// Adds the data to dataGridViewFavourites
+        /// </summary>
+        private void FeedDataToDataGridViewFavourites()
+        {
+            dataGridViewFavourites.RowHeadersWidthSizeMode = DataGridViewRowHeadersWidthSizeMode.DisableResizing;
+            dataGridViewFavourites.RowHeadersVisible = false;
+            dbAccess.OpenConnection();
+            favouriteSuitesList = dbAccess.GetSuites(0).OrderBy(p => p.SuiteId).Select(p => p).ToList();
+            dbAccess.CloseConnection();
+            dataGridViewFavourites.Rows.Clear();            
 
             foreach (DisplayData p in favouriteSuitesList)
             {
                 dbAccess.OpenConnection();
-                if(dbAccess.CheckInFavourites(new Favourite
+                if (dbAccess.CheckInFavourites(new Favourite
                 {
                     UserId = userId,
                     SuiteId = p.SuiteId
@@ -319,6 +331,7 @@ namespace WorldStay
 
                 dbAccess.CloseConnection();
             }
+            dataGridViewFavourites.RowHeadersVisible = true;
         }
 
         private void UpdateDataGridViewSuites()

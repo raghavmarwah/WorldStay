@@ -28,7 +28,7 @@ namespace WorldStay
             selectedSuiteId = suiteId;
             this.userId = userId;
 
-            this.Height = 600;
+            this.Height = 630;
             buttonBookNow.FlatAppearance.BorderSize = 0;
             buttonAddToFavourites.FlatAppearance.BorderSize = 0;
 
@@ -73,7 +73,26 @@ namespace WorldStay
 
         private void buttonBookNow_Click(object sender, EventArgs e)
         {
-
+            dbAccess.OpenConnection();
+            try
+            {
+                dbAccess.ConfirmBooking(new ActiveBooking
+                {
+                    UserId = userId,
+                    SuiteId = selectedSuiteId,
+                    CheckInDate = dateTimeCheckIn.Value,
+                    StayDuration = int.Parse(textBoxStayDuration.Text)
+                });
+            }catch(Exception ex)
+            {
+                MessageBox.Show($"Error: {ex.Message}!");
+            }
+            finally
+            {
+                MessageBox.Show("Suite has been added to your cart!");
+                this.Close();
+            }
+            dbAccess.CloseConnection();
         }
 
         private void buttonAddToFavourites_Click(object sender, EventArgs e)

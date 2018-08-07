@@ -48,6 +48,10 @@
             this.labelNightlyRate = new System.Windows.Forms.Label();
             this.buttonAddToFavourites = new System.Windows.Forms.Button();
             this.toolTip = new System.Windows.Forms.ToolTip(this.components);
+            this.labelSelectCheckInDate = new System.Windows.Forms.Label();
+            this.dateTimeCheckIn = new System.Windows.Forms.DateTimePicker();
+            this.labelStayDuration = new System.Windows.Forms.Label();
+            this.textBoxStayDuration = new System.Windows.Forms.TextBox();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxSuiteImage)).BeginInit();
             this.panelPriceDisplay.SuspendLayout();
             this.SuspendLayout();
@@ -211,7 +215,7 @@
             this.buttonBookNow.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.buttonBookNow.Font = new System.Drawing.Font("Arial Narrow", 10.875F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.buttonBookNow.ForeColor = System.Drawing.Color.White;
-            this.buttonBookNow.Location = new System.Drawing.Point(869, 944);
+            this.buttonBookNow.Location = new System.Drawing.Point(869, 1003);
             this.buttonBookNow.Name = "buttonBookNow";
             this.buttonBookNow.Size = new System.Drawing.Size(199, 86);
             this.buttonBookNow.TabIndex = 13;
@@ -223,9 +227,9 @@
             // 
             this.panelPriceDisplay.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(183)))), ((int)(((byte)(141)))));
             this.panelPriceDisplay.Controls.Add(this.labelNightlyRate);
-            this.panelPriceDisplay.Location = new System.Drawing.Point(698, 742);
+            this.panelPriceDisplay.Location = new System.Drawing.Point(671, 628);
             this.panelPriceDisplay.Name = "panelPriceDisplay";
-            this.panelPriceDisplay.Size = new System.Drawing.Size(370, 168);
+            this.panelPriceDisplay.Size = new System.Drawing.Size(397, 168);
             this.panelPriceDisplay.TabIndex = 14;
             // 
             // labelNightlyRate
@@ -233,7 +237,7 @@
             this.labelNightlyRate.AutoSize = true;
             this.labelNightlyRate.Font = new System.Drawing.Font("Arial Narrow", 19.875F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.labelNightlyRate.ForeColor = System.Drawing.Color.White;
-            this.labelNightlyRate.Location = new System.Drawing.Point(26, 55);
+            this.labelNightlyRate.Location = new System.Drawing.Point(38, 55);
             this.labelNightlyRate.Name = "labelNightlyRate";
             this.labelNightlyRate.Size = new System.Drawing.Size(326, 63);
             this.labelNightlyRate.TabIndex = 0;
@@ -244,19 +248,61 @@
             this.buttonAddToFavourites.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("buttonAddToFavourites.BackgroundImage")));
             this.buttonAddToFavourites.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
             this.buttonAddToFavourites.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.buttonAddToFavourites.Location = new System.Drawing.Point(698, 957);
+            this.buttonAddToFavourites.Location = new System.Drawing.Point(681, 1003);
             this.buttonAddToFavourites.Name = "buttonAddToFavourites";
             this.buttonAddToFavourites.Size = new System.Drawing.Size(80, 73);
             this.buttonAddToFavourites.TabIndex = 15;
             this.buttonAddToFavourites.UseVisualStyleBackColor = true;
             this.buttonAddToFavourites.Click += new System.EventHandler(this.buttonAddToFavourites_Click);
             // 
+            // labelSelectCheckInDate
+            // 
+            this.labelSelectCheckInDate.AutoSize = true;
+            this.labelSelectCheckInDate.BackColor = System.Drawing.Color.Silver;
+            this.labelSelectCheckInDate.Font = new System.Drawing.Font("Segoe UI Semibold", 10.125F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labelSelectCheckInDate.ForeColor = System.Drawing.Color.Black;
+            this.labelSelectCheckInDate.Location = new System.Drawing.Point(674, 834);
+            this.labelSelectCheckInDate.Name = "labelSelectCheckInDate";
+            this.labelSelectCheckInDate.Size = new System.Drawing.Size(129, 37);
+            this.labelSelectCheckInDate.TabIndex = 16;
+            this.labelSelectCheckInDate.Text = "Check In:";
+            // 
+            // dateTimeCheckIn
+            // 
+            this.dateTimeCheckIn.Location = new System.Drawing.Point(823, 834);
+            this.dateTimeCheckIn.Name = "dateTimeCheckIn";
+            this.dateTimeCheckIn.Size = new System.Drawing.Size(245, 31);
+            this.dateTimeCheckIn.TabIndex = 17;
+            // 
+            // labelStayDuration
+            // 
+            this.labelStayDuration.AutoSize = true;
+            this.labelStayDuration.BackColor = System.Drawing.Color.Silver;
+            this.labelStayDuration.Font = new System.Drawing.Font("Segoe UI Semibold", 10.125F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labelStayDuration.ForeColor = System.Drawing.Color.Black;
+            this.labelStayDuration.Location = new System.Drawing.Point(674, 909);
+            this.labelStayDuration.Name = "labelStayDuration";
+            this.labelStayDuration.Size = new System.Drawing.Size(272, 37);
+            this.labelStayDuration.TabIndex = 18;
+            this.labelStayDuration.Text = "Stay Duration (days):";
+            // 
+            // textBoxStayDuration
+            // 
+            this.textBoxStayDuration.Location = new System.Drawing.Point(966, 909);
+            this.textBoxStayDuration.Name = "textBoxStayDuration";
+            this.textBoxStayDuration.Size = new System.Drawing.Size(102, 31);
+            this.textBoxStayDuration.TabIndex = 19;
+            // 
             // FormDisplaySuite
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(12F, 25F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
-            this.ClientSize = new System.Drawing.Size(1092, 1048);
+            this.ClientSize = new System.Drawing.Size(1092, 1105);
+            this.Controls.Add(this.textBoxStayDuration);
+            this.Controls.Add(this.labelStayDuration);
+            this.Controls.Add(this.dateTimeCheckIn);
+            this.Controls.Add(this.labelSelectCheckInDate);
             this.Controls.Add(this.buttonAddToFavourites);
             this.Controls.Add(this.panelPriceDisplay);
             this.Controls.Add(this.buttonBookNow);
@@ -305,5 +351,9 @@
         private System.Windows.Forms.Label labelNightlyRate;
         private System.Windows.Forms.Button buttonAddToFavourites;
         private System.Windows.Forms.ToolTip toolTip;
+        private System.Windows.Forms.Label labelSelectCheckInDate;
+        private System.Windows.Forms.DateTimePicker dateTimeCheckIn;
+        private System.Windows.Forms.Label labelStayDuration;
+        private System.Windows.Forms.TextBox textBoxStayDuration;
     }
 }
