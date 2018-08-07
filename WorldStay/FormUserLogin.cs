@@ -20,7 +20,7 @@ namespace WorldStay
         private void FormUserLogin_Load(object sender, EventArgs e)
         {
             this.Height = 590;
-            this.Width = 1079;
+            this.Width = 800;
         }
 
         private void buttonCloseForm_Click(object sender, EventArgs e)

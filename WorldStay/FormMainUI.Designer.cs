@@ -128,7 +128,7 @@
             this.buttonNavProfile.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
             this.buttonNavProfile.FlatAppearance.BorderSize = 0;
             this.buttonNavProfile.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.buttonNavProfile.Font = new System.Drawing.Font("Arial Rounded MT Bold", 16.125F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.buttonNavProfile.Font = new System.Drawing.Font("Segoe UI Semibold", 16.125F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.buttonNavProfile.ForeColor = System.Drawing.Color.White;
             this.buttonNavProfile.Image = ((System.Drawing.Image)(resources.GetObject("buttonNavProfile.Image")));
             this.buttonNavProfile.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -147,7 +147,7 @@
             this.buttonNavCheckout.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
             this.buttonNavCheckout.FlatAppearance.BorderSize = 0;
             this.buttonNavCheckout.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.buttonNavCheckout.Font = new System.Drawing.Font("Arial Rounded MT Bold", 16.125F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.buttonNavCheckout.Font = new System.Drawing.Font("Segoe UI Semibold", 16.125F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.buttonNavCheckout.ForeColor = System.Drawing.Color.White;
             this.buttonNavCheckout.Image = ((System.Drawing.Image)(resources.GetObject("buttonNavCheckout.Image")));
             this.buttonNavCheckout.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -166,7 +166,7 @@
             this.buttonNavFavourites.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
             this.buttonNavFavourites.FlatAppearance.BorderSize = 0;
             this.buttonNavFavourites.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.buttonNavFavourites.Font = new System.Drawing.Font("Arial Rounded MT Bold", 16.125F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.buttonNavFavourites.Font = new System.Drawing.Font("Segoe UI Semibold", 16.125F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.buttonNavFavourites.ForeColor = System.Drawing.Color.White;
             this.buttonNavFavourites.Image = ((System.Drawing.Image)(resources.GetObject("buttonNavFavourites.Image")));
             this.buttonNavFavourites.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -185,7 +185,7 @@
             this.buttonNavSearch.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
             this.buttonNavSearch.FlatAppearance.BorderSize = 0;
             this.buttonNavSearch.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.buttonNavSearch.Font = new System.Drawing.Font("Arial Rounded MT Bold", 16.125F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.buttonNavSearch.Font = new System.Drawing.Font("Segoe UI Semibold", 16.125F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.buttonNavSearch.ForeColor = System.Drawing.Color.White;
             this.buttonNavSearch.Image = ((System.Drawing.Image)(resources.GetObject("buttonNavSearch.Image")));
             this.buttonNavSearch.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -284,7 +284,7 @@
             // 
             this.buttonClearFilters.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(35)))), ((int)(((byte)(55)))), ((int)(((byte)(67)))));
             this.buttonClearFilters.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.buttonClearFilters.Font = new System.Drawing.Font("Arial Narrow", 10.875F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.buttonClearFilters.Font = new System.Drawing.Font("Segoe UI Semibold", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.buttonClearFilters.ForeColor = System.Drawing.Color.White;
             this.buttonClearFilters.Location = new System.Drawing.Point(1335, 872);
             this.buttonClearFilters.Name = "buttonClearFilters";
@@ -296,82 +296,82 @@
             // 
             // comboBoxNumBathrooms
             // 
-            this.comboBoxNumBathrooms.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.comboBoxNumBathrooms.Font = new System.Drawing.Font("Segoe UI Semibold", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.comboBoxNumBathrooms.FormattingEnabled = true;
             this.comboBoxNumBathrooms.Location = new System.Drawing.Point(1147, 938);
             this.comboBoxNumBathrooms.Name = "comboBoxNumBathrooms";
-            this.comboBoxNumBathrooms.Size = new System.Drawing.Size(115, 35);
+            this.comboBoxNumBathrooms.Size = new System.Drawing.Size(115, 40);
             this.comboBoxNumBathrooms.TabIndex = 10;
             // 
             // comboBoxNumBedrooms
             // 
-            this.comboBoxNumBedrooms.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.comboBoxNumBedrooms.Font = new System.Drawing.Font("Segoe UI Semibold", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.comboBoxNumBedrooms.FormattingEnabled = true;
             this.comboBoxNumBedrooms.Location = new System.Drawing.Point(836, 938);
             this.comboBoxNumBedrooms.Name = "comboBoxNumBedrooms";
-            this.comboBoxNumBedrooms.Size = new System.Drawing.Size(115, 35);
+            this.comboBoxNumBedrooms.Size = new System.Drawing.Size(115, 40);
             this.comboBoxNumBedrooms.TabIndex = 9;
             // 
             // labelNumBathrooms
             // 
             this.labelNumBathrooms.AutoSize = true;
-            this.labelNumBathrooms.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labelNumBathrooms.Font = new System.Drawing.Font("Segoe UI Semibold", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.labelNumBathrooms.Location = new System.Drawing.Point(999, 941);
             this.labelNumBathrooms.Name = "labelNumBathrooms";
-            this.labelNumBathrooms.Size = new System.Drawing.Size(142, 27);
+            this.labelNumBathrooms.Size = new System.Drawing.Size(147, 32);
             this.labelNumBathrooms.TabIndex = 8;
             this.labelNumBathrooms.Text = "Bathrooms: ";
             // 
             // labelNumBedrooms
             // 
             this.labelNumBedrooms.AutoSize = true;
-            this.labelNumBedrooms.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labelNumBedrooms.Font = new System.Drawing.Font("Segoe UI Semibold", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.labelNumBedrooms.Location = new System.Drawing.Point(689, 941);
             this.labelNumBedrooms.Name = "labelNumBedrooms";
-            this.labelNumBedrooms.Size = new System.Drawing.Size(135, 27);
+            this.labelNumBedrooms.Size = new System.Drawing.Size(138, 32);
             this.labelNumBedrooms.TabIndex = 7;
             this.labelNumBedrooms.Text = "Bedrooms: ";
             // 
             // textBoxNameSearchString
             // 
-            this.textBoxNameSearchString.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.textBoxNameSearchString.Font = new System.Drawing.Font("Segoe UI Semibold", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.textBoxNameSearchString.Location = new System.Drawing.Point(139, 855);
             this.textBoxNameSearchString.Name = "textBoxNameSearchString";
-            this.textBoxNameSearchString.Size = new System.Drawing.Size(459, 35);
+            this.textBoxNameSearchString.Size = new System.Drawing.Size(459, 39);
             this.textBoxNameSearchString.TabIndex = 6;
             // 
             // labelSearchByName
             // 
             this.labelSearchByName.AutoSize = true;
-            this.labelSearchByName.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labelSearchByName.Font = new System.Drawing.Font("Segoe UI Semibold", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.labelSearchByName.Location = new System.Drawing.Point(12, 858);
             this.labelSearchByName.Name = "labelSearchByName";
-            this.labelSearchByName.Size = new System.Drawing.Size(95, 27);
+            this.labelSearchByName.Size = new System.Drawing.Size(94, 32);
             this.labelSearchByName.TabIndex = 5;
             this.labelSearchByName.Text = "Search:";
             // 
             // comboBoxRoomType
             // 
-            this.comboBoxRoomType.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.comboBoxRoomType.Font = new System.Drawing.Font("Segoe UI Semibold", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.comboBoxRoomType.FormattingEnabled = true;
             this.comboBoxRoomType.Location = new System.Drawing.Point(836, 855);
             this.comboBoxRoomType.Name = "comboBoxRoomType";
-            this.comboBoxRoomType.Size = new System.Drawing.Size(426, 35);
+            this.comboBoxRoomType.Size = new System.Drawing.Size(426, 40);
             this.comboBoxRoomType.TabIndex = 4;
             // 
             // labelRoomType
             // 
             this.labelRoomType.AutoSize = true;
-            this.labelRoomType.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labelRoomType.Font = new System.Drawing.Font("Segoe UI Semibold", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.labelRoomType.Location = new System.Drawing.Point(689, 858);
             this.labelRoomType.Name = "labelRoomType";
-            this.labelRoomType.Size = new System.Drawing.Size(141, 27);
+            this.labelRoomType.Size = new System.Drawing.Size(142, 32);
             this.labelRoomType.TabIndex = 3;
             this.labelRoomType.Text = "Room Type:";
             // 
             // comboBoxOrderBy
             // 
-            this.comboBoxOrderBy.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.comboBoxOrderBy.Font = new System.Drawing.Font("Segoe UI Semibold", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.comboBoxOrderBy.FormattingEnabled = true;
             this.comboBoxOrderBy.Items.AddRange(new object[] {
             "Suite Id",
@@ -380,16 +380,16 @@
             "Price (High to Low)"});
             this.comboBoxOrderBy.Location = new System.Drawing.Point(139, 941);
             this.comboBoxOrderBy.Name = "comboBoxOrderBy";
-            this.comboBoxOrderBy.Size = new System.Drawing.Size(459, 35);
+            this.comboBoxOrderBy.Size = new System.Drawing.Size(459, 40);
             this.comboBoxOrderBy.TabIndex = 2;
             // 
             // labelOrderBy
             // 
             this.labelOrderBy.AutoSize = true;
-            this.labelOrderBy.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labelOrderBy.Font = new System.Drawing.Font("Segoe UI Semibold", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.labelOrderBy.Location = new System.Drawing.Point(12, 941);
             this.labelOrderBy.Name = "labelOrderBy";
-            this.labelOrderBy.Size = new System.Drawing.Size(116, 27);
+            this.labelOrderBy.Size = new System.Drawing.Size(118, 32);
             this.labelOrderBy.TabIndex = 1;
             this.labelOrderBy.Text = "Order By:";
             // 
@@ -441,7 +441,7 @@
             // 
             this.buttonViewSuite.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(0)))));
             this.buttonViewSuite.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.buttonViewSuite.Font = new System.Drawing.Font("Arial Narrow", 10.875F, System.Drawing.FontStyle.Bold);
+            this.buttonViewSuite.Font = new System.Drawing.Font("Segoe UI Semibold", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.buttonViewSuite.ForeColor = System.Drawing.Color.White;
             this.buttonViewSuite.Location = new System.Drawing.Point(2026, 799);
             this.buttonViewSuite.Name = "buttonViewSuite";
