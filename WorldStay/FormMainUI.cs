@@ -297,5 +297,19 @@ namespace WorldStay
             }
 
         }
+
+        /// <summary>
+        /// Resets all search filters to their default value. 
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void buttonClearFilters_Click(object sender, EventArgs e)
+        {
+            textBoxNameSearchString.Text = "";
+            comboBoxNumBedrooms.SelectedIndex = 0;
+            comboBoxNumBathrooms.SelectedIndex = 0;
+            comboBoxRoomType.SelectedIndex = 0;
+            comboBoxOrderBy.SelectedIndex = 0;
+        }
     }
 }

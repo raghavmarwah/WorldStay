@@ -45,21 +45,23 @@
             this.buttonCloseForm = new System.Windows.Forms.Button();
             this.pictureBoxSmallLogo = new System.Windows.Forms.PictureBox();
             this.panelSearch = new System.Windows.Forms.Panel();
+            this.buttonClearFilters = new System.Windows.Forms.Button();
+            this.comboBoxNumBathrooms = new System.Windows.Forms.ComboBox();
+            this.comboBoxNumBedrooms = new System.Windows.Forms.ComboBox();
+            this.labelNumBathrooms = new System.Windows.Forms.Label();
+            this.labelNumBedrooms = new System.Windows.Forms.Label();
+            this.textBoxNameSearchString = new System.Windows.Forms.TextBox();
+            this.labelSearchByName = new System.Windows.Forms.Label();
+            this.comboBoxRoomType = new System.Windows.Forms.ComboBox();
+            this.labelRoomType = new System.Windows.Forms.Label();
+            this.comboBoxOrderBy = new System.Windows.Forms.ComboBox();
+            this.labelOrderBy = new System.Windows.Forms.Label();
             this.dataGridViewSuites = new System.Windows.Forms.DataGridView();
             this.panelFavourites = new System.Windows.Forms.Panel();
             this.panelCheckout = new System.Windows.Forms.Panel();
             this.panelProfile = new System.Windows.Forms.Panel();
             this.buttonReseedData = new System.Windows.Forms.Button();
-            this.labelOrderBy = new System.Windows.Forms.Label();
-            this.comboBoxOrderBy = new System.Windows.Forms.ComboBox();
-            this.labelRoomType = new System.Windows.Forms.Label();
-            this.comboBoxRoomType = new System.Windows.Forms.ComboBox();
-            this.labelSearchByName = new System.Windows.Forms.Label();
-            this.textBoxNameSearchString = new System.Windows.Forms.TextBox();
-            this.labelNumBedrooms = new System.Windows.Forms.Label();
-            this.labelNumBathrooms = new System.Windows.Forms.Label();
-            this.comboBoxNumBedrooms = new System.Windows.Forms.ComboBox();
-            this.comboBoxNumBathrooms = new System.Windows.Forms.ComboBox();
+            this.buttonViewSuite = new System.Windows.Forms.Button();
             this.panelLeftNavigation.SuspendLayout();
             this.panelTopStrip.SuspendLayout();
             this.panel4.SuspendLayout();
@@ -261,6 +263,7 @@
             // panelSearch
             // 
             this.panelSearch.BackColor = System.Drawing.Color.White;
+            this.panelSearch.Controls.Add(this.buttonClearFilters);
             this.panelSearch.Controls.Add(this.comboBoxNumBathrooms);
             this.panelSearch.Controls.Add(this.comboBoxNumBedrooms);
             this.panelSearch.Controls.Add(this.labelNumBathrooms);
@@ -276,6 +279,118 @@
             this.panelSearch.Name = "panelSearch";
             this.panelSearch.Size = new System.Drawing.Size(1595, 1056);
             this.panelSearch.TabIndex = 5;
+            // 
+            // buttonClearFilters
+            // 
+            this.buttonClearFilters.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(35)))), ((int)(((byte)(55)))), ((int)(((byte)(67)))));
+            this.buttonClearFilters.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.buttonClearFilters.Font = new System.Drawing.Font("Arial Narrow", 10.875F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.buttonClearFilters.ForeColor = System.Drawing.Color.White;
+            this.buttonClearFilters.Location = new System.Drawing.Point(1335, 872);
+            this.buttonClearFilters.Name = "buttonClearFilters";
+            this.buttonClearFilters.Size = new System.Drawing.Size(199, 86);
+            this.buttonClearFilters.TabIndex = 11;
+            this.buttonClearFilters.Text = "Clear Filters";
+            this.buttonClearFilters.UseVisualStyleBackColor = false;
+            this.buttonClearFilters.Click += new System.EventHandler(this.buttonClearFilters_Click);
+            // 
+            // comboBoxNumBathrooms
+            // 
+            this.comboBoxNumBathrooms.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.comboBoxNumBathrooms.FormattingEnabled = true;
+            this.comboBoxNumBathrooms.Location = new System.Drawing.Point(1147, 938);
+            this.comboBoxNumBathrooms.Name = "comboBoxNumBathrooms";
+            this.comboBoxNumBathrooms.Size = new System.Drawing.Size(115, 35);
+            this.comboBoxNumBathrooms.TabIndex = 10;
+            // 
+            // comboBoxNumBedrooms
+            // 
+            this.comboBoxNumBedrooms.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.comboBoxNumBedrooms.FormattingEnabled = true;
+            this.comboBoxNumBedrooms.Location = new System.Drawing.Point(836, 938);
+            this.comboBoxNumBedrooms.Name = "comboBoxNumBedrooms";
+            this.comboBoxNumBedrooms.Size = new System.Drawing.Size(115, 35);
+            this.comboBoxNumBedrooms.TabIndex = 9;
+            // 
+            // labelNumBathrooms
+            // 
+            this.labelNumBathrooms.AutoSize = true;
+            this.labelNumBathrooms.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labelNumBathrooms.Location = new System.Drawing.Point(999, 941);
+            this.labelNumBathrooms.Name = "labelNumBathrooms";
+            this.labelNumBathrooms.Size = new System.Drawing.Size(142, 27);
+            this.labelNumBathrooms.TabIndex = 8;
+            this.labelNumBathrooms.Text = "Bathrooms: ";
+            // 
+            // labelNumBedrooms
+            // 
+            this.labelNumBedrooms.AutoSize = true;
+            this.labelNumBedrooms.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labelNumBedrooms.Location = new System.Drawing.Point(689, 941);
+            this.labelNumBedrooms.Name = "labelNumBedrooms";
+            this.labelNumBedrooms.Size = new System.Drawing.Size(135, 27);
+            this.labelNumBedrooms.TabIndex = 7;
+            this.labelNumBedrooms.Text = "Bedrooms: ";
+            // 
+            // textBoxNameSearchString
+            // 
+            this.textBoxNameSearchString.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.textBoxNameSearchString.Location = new System.Drawing.Point(139, 855);
+            this.textBoxNameSearchString.Name = "textBoxNameSearchString";
+            this.textBoxNameSearchString.Size = new System.Drawing.Size(459, 35);
+            this.textBoxNameSearchString.TabIndex = 6;
+            // 
+            // labelSearchByName
+            // 
+            this.labelSearchByName.AutoSize = true;
+            this.labelSearchByName.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labelSearchByName.Location = new System.Drawing.Point(12, 858);
+            this.labelSearchByName.Name = "labelSearchByName";
+            this.labelSearchByName.Size = new System.Drawing.Size(95, 27);
+            this.labelSearchByName.TabIndex = 5;
+            this.labelSearchByName.Text = "Search:";
+            // 
+            // comboBoxRoomType
+            // 
+            this.comboBoxRoomType.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.comboBoxRoomType.FormattingEnabled = true;
+            this.comboBoxRoomType.Location = new System.Drawing.Point(836, 855);
+            this.comboBoxRoomType.Name = "comboBoxRoomType";
+            this.comboBoxRoomType.Size = new System.Drawing.Size(426, 35);
+            this.comboBoxRoomType.TabIndex = 4;
+            // 
+            // labelRoomType
+            // 
+            this.labelRoomType.AutoSize = true;
+            this.labelRoomType.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labelRoomType.Location = new System.Drawing.Point(689, 858);
+            this.labelRoomType.Name = "labelRoomType";
+            this.labelRoomType.Size = new System.Drawing.Size(141, 27);
+            this.labelRoomType.TabIndex = 3;
+            this.labelRoomType.Text = "Room Type:";
+            // 
+            // comboBoxOrderBy
+            // 
+            this.comboBoxOrderBy.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.comboBoxOrderBy.FormattingEnabled = true;
+            this.comboBoxOrderBy.Items.AddRange(new object[] {
+            "Country",
+            "Price (Low to High)",
+            "Price (High to Low)"});
+            this.comboBoxOrderBy.Location = new System.Drawing.Point(139, 941);
+            this.comboBoxOrderBy.Name = "comboBoxOrderBy";
+            this.comboBoxOrderBy.Size = new System.Drawing.Size(459, 35);
+            this.comboBoxOrderBy.TabIndex = 2;
+            // 
+            // labelOrderBy
+            // 
+            this.labelOrderBy.AutoSize = true;
+            this.labelOrderBy.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labelOrderBy.Location = new System.Drawing.Point(12, 941);
+            this.labelOrderBy.Name = "labelOrderBy";
+            this.labelOrderBy.Size = new System.Drawing.Size(116, 27);
+            this.labelOrderBy.TabIndex = 1;
+            this.labelOrderBy.Text = "Order By:";
             // 
             // dataGridViewSuites
             // 
@@ -321,93 +436,18 @@
             this.buttonReseedData.Visible = false;
             this.buttonReseedData.Click += new System.EventHandler(this.buttonReseedData_Click);
             // 
-            // labelOrderBy
+            // buttonViewSuite
             // 
-            this.labelOrderBy.AutoSize = true;
-            this.labelOrderBy.Location = new System.Drawing.Point(12, 842);
-            this.labelOrderBy.Name = "labelOrderBy";
-            this.labelOrderBy.Size = new System.Drawing.Size(103, 25);
-            this.labelOrderBy.TabIndex = 1;
-            this.labelOrderBy.Text = "Order By:";
-            // 
-            // comboBoxOrderBy
-            // 
-            this.comboBoxOrderBy.FormattingEnabled = true;
-            this.comboBoxOrderBy.Items.AddRange(new object[] {
-            "Country",
-            "Price (Low to High)",
-            "Price (High to Low)"});
-            this.comboBoxOrderBy.Location = new System.Drawing.Point(134, 839);
-            this.comboBoxOrderBy.Name = "comboBoxOrderBy";
-            this.comboBoxOrderBy.Size = new System.Drawing.Size(308, 33);
-            this.comboBoxOrderBy.TabIndex = 2;
-            // 
-            // labelRoomType
-            // 
-            this.labelRoomType.AutoSize = true;
-            this.labelRoomType.Location = new System.Drawing.Point(12, 924);
-            this.labelRoomType.Name = "labelRoomType";
-            this.labelRoomType.Size = new System.Drawing.Size(128, 25);
-            this.labelRoomType.TabIndex = 3;
-            this.labelRoomType.Text = "Room Type:";
-            // 
-            // comboBoxRoomType
-            // 
-            this.comboBoxRoomType.FormattingEnabled = true;
-            this.comboBoxRoomType.Location = new System.Drawing.Point(162, 930);
-            this.comboBoxRoomType.Name = "comboBoxRoomType";
-            this.comboBoxRoomType.Size = new System.Drawing.Size(339, 33);
-            this.comboBoxRoomType.TabIndex = 4;
-            // 
-            // labelSearchByName
-            // 
-            this.labelSearchByName.AutoSize = true;
-            this.labelSearchByName.Location = new System.Drawing.Point(520, 842);
-            this.labelSearchByName.Name = "labelSearchByName";
-            this.labelSearchByName.Size = new System.Drawing.Size(86, 25);
-            this.labelSearchByName.TabIndex = 5;
-            this.labelSearchByName.Text = "Search:";
-            // 
-            // textBoxNameSearchString
-            // 
-            this.textBoxNameSearchString.Location = new System.Drawing.Point(624, 839);
-            this.textBoxNameSearchString.Name = "textBoxNameSearchString";
-            this.textBoxNameSearchString.Size = new System.Drawing.Size(472, 31);
-            this.textBoxNameSearchString.TabIndex = 6;
-            // 
-            // labelNumBedrooms
-            // 
-            this.labelNumBedrooms.AutoSize = true;
-            this.labelNumBedrooms.Location = new System.Drawing.Point(582, 933);
-            this.labelNumBedrooms.Name = "labelNumBedrooms";
-            this.labelNumBedrooms.Size = new System.Drawing.Size(121, 25);
-            this.labelNumBedrooms.TabIndex = 7;
-            this.labelNumBedrooms.Text = "Bedrooms: ";
-            // 
-            // labelNumBathrooms
-            // 
-            this.labelNumBathrooms.AutoSize = true;
-            this.labelNumBathrooms.Location = new System.Drawing.Point(975, 924);
-            this.labelNumBathrooms.Name = "labelNumBathrooms";
-            this.labelNumBathrooms.Size = new System.Drawing.Size(127, 25);
-            this.labelNumBathrooms.TabIndex = 8;
-            this.labelNumBathrooms.Text = "Bathrooms: ";
-            // 
-            // comboBoxNumBedrooms
-            // 
-            this.comboBoxNumBedrooms.FormattingEnabled = true;
-            this.comboBoxNumBedrooms.Location = new System.Drawing.Point(715, 938);
-            this.comboBoxNumBedrooms.Name = "comboBoxNumBedrooms";
-            this.comboBoxNumBedrooms.Size = new System.Drawing.Size(115, 33);
-            this.comboBoxNumBedrooms.TabIndex = 9;
-            // 
-            // comboBoxNumBathrooms
-            // 
-            this.comboBoxNumBathrooms.FormattingEnabled = true;
-            this.comboBoxNumBathrooms.Location = new System.Drawing.Point(1121, 930);
-            this.comboBoxNumBathrooms.Name = "comboBoxNumBathrooms";
-            this.comboBoxNumBathrooms.Size = new System.Drawing.Size(115, 33);
-            this.comboBoxNumBathrooms.TabIndex = 10;
+            this.buttonViewSuite.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(0)))));
+            this.buttonViewSuite.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.buttonViewSuite.Font = new System.Drawing.Font("Arial Narrow", 10.875F, System.Drawing.FontStyle.Bold);
+            this.buttonViewSuite.ForeColor = System.Drawing.Color.White;
+            this.buttonViewSuite.Location = new System.Drawing.Point(2012, 799);
+            this.buttonViewSuite.Name = "buttonViewSuite";
+            this.buttonViewSuite.Size = new System.Drawing.Size(119, 70);
+            this.buttonViewSuite.TabIndex = 7;
+            this.buttonViewSuite.Text = "View>";
+            this.buttonViewSuite.UseVisualStyleBackColor = false;
             // 
             // FormMainUI
             // 
@@ -415,6 +455,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(2157, 1135);
+            this.Controls.Add(this.buttonViewSuite);
             this.Controls.Add(this.panelSearch);
             this.Controls.Add(this.buttonReseedData);
             this.Controls.Add(this.panelProfile);
@@ -474,6 +515,8 @@
         private System.Windows.Forms.ComboBox comboBoxNumBedrooms;
         private System.Windows.Forms.Label labelNumBathrooms;
         private System.Windows.Forms.Label labelNumBedrooms;
+        private System.Windows.Forms.Button buttonClearFilters;
+        private System.Windows.Forms.Button buttonViewSuite;
     }
 }
 
