@@ -217,6 +217,7 @@
             this.buttonBookNow.TabIndex = 13;
             this.buttonBookNow.Text = "Book Now!";
             this.buttonBookNow.UseVisualStyleBackColor = false;
+            this.buttonBookNow.Click += new System.EventHandler(this.buttonBookNow_Click);
             // 
             // panelPriceDisplay
             // 
@@ -248,6 +249,7 @@
             this.buttonAddToFavourites.Size = new System.Drawing.Size(80, 73);
             this.buttonAddToFavourites.TabIndex = 15;
             this.buttonAddToFavourites.UseVisualStyleBackColor = true;
+            this.buttonAddToFavourites.Click += new System.EventHandler(this.buttonAddToFavourites_Click);
             // 
             // FormDisplaySuite
             // 

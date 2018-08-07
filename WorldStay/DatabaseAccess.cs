@@ -99,6 +99,82 @@ namespace WorldStay
         }
 
         /// <summary>
+        /// Inserts a new favourite to the database
+        /// </summary>
+        /// <param name="f">Favourite Object</param>
+        public void AddToFavourites(Favourite f)
+        {
+            /*if (CheckInFavourites(f))
+                return;*/
+
+            string sql = "Insert Into Favourites (UserId, SuiteId) Values " +
+                $"('{f.UserId}', '{f.SuiteId}')";
+
+            using (SqlCommand command = new SqlCommand(sql, dbConnection))
+            {
+                try
+                {
+                    command.ExecuteNonQuery();
+                }
+                catch (SqlException ex)
+                {
+                    Console.WriteLine($"Error: {ex.Message}");
+                }
+            }
+        }
+
+        /// <summary>
+        /// Removes the given favourite from the database
+        /// </summary>
+        /// <param name="f">Favourite Object</param>
+        public void RemoveFromFavourites(Favourite f)
+        {
+            string sql = "Delete from Favourites where " +
+                $"Favourites.UserId = {f.UserId} and Favourites.SuiteId = {f.SuiteId}";
+
+            using (SqlCommand command = new SqlCommand(sql, dbConnection))
+            {
+                try
+                {
+                    command.ExecuteNonQuery();
+                }
+                catch (SqlException ex)
+                {
+                    Console.WriteLine($"Error: {ex.Message}");
+                }
+            }
+        }
+
+        /// <summary>
+        /// Checks existence of a favourite in the db.
+        /// </summary>
+        /// <param name="f">Favourite Object</param>
+        /// <returns>Boolean</returns>
+        public bool CheckInFavourites(Favourite f)
+        {
+            bool existsInFavourites = false;
+
+            string sql = "Select * From Favourites where " +
+                $"Favourites.UserId = {f.UserId} and Favourites.SuiteId = {f.SuiteId}";
+
+            using (SqlCommand command = new SqlCommand(sql, dbConnection))
+            {
+                try
+                {
+                    SqlDataReader dataReader = command.ExecuteReader();
+                    if (dataReader.HasRows)
+                        existsInFavourites = true;
+                }
+                catch (SqlException ex)
+                {
+                    Console.WriteLine($"Error: {ex.Message}");
+                }
+            }
+
+            return existsInFavourites;
+        }
+
+        /// <summary>
         /// Inserts a new suite to the database
         /// </summary>
         /// <param name="s">Suite Object</param>

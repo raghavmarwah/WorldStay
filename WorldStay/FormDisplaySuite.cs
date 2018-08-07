@@ -13,15 +13,20 @@ namespace WorldStay
     public partial class FormDisplaySuite : Form
     {
         DatabaseAccess dbAccess = new DatabaseAccess();
-        int selectedSuiteId = 0;
+        int selectedSuiteId;
+        int userId;
 
         //selected suite global object
-        DisplayData selectedSuite; 
+        DisplayData selectedSuite;
 
-        public FormDisplaySuite(int suiteId)
+        //bool checking if the suite is in favourites.
+        bool inFavourties;
+
+        public FormDisplaySuite(int suiteId, int userId)
         {
             InitializeComponent();
             selectedSuiteId = suiteId;
+            this.userId = userId;
 
             this.Height = 600;
             buttonBookNow.FlatAppearance.BorderSize = 0;
@@ -52,6 +57,64 @@ namespace WorldStay
             labelNightlyRate.Text = selectedSuite.NightlyRate.ToString("c2") + " / night";
 
             toolTip.SetToolTip(buttonAddToFavourites, "Add To Favourites!");
+            //checking if the suite is a favourite
+            dbAccess.OpenConnection();
+            inFavourties = dbAccess.CheckInFavourites(new Favourite
+            {
+                UserId = userId,
+                SuiteId = selectedSuiteId
+            });
+            dbAccess.CloseConnection();
+            ChangeFavouriteIcon(inFavourties);
+
+        }
+
+        
+
+        private void buttonBookNow_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void buttonAddToFavourites_Click(object sender, EventArgs e)
+        {
+            Favourite currentSuite = new Favourite
+            {
+                UserId = userId,
+                SuiteId = selectedSuiteId
+            };
+
+
+            dbAccess.OpenConnection();
+            inFavourties = dbAccess.CheckInFavourites(new Favourite
+            {
+                UserId = userId,
+                SuiteId = selectedSuiteId
+            });
+            dbAccess.CloseConnection();
+
+            if (inFavourties)
+            {
+                dbAccess.OpenConnection();
+                dbAccess.RemoveFromFavourites(currentSuite);
+                ChangeFavouriteIcon(false);
+                dbAccess.CloseConnection();
+            }
+            else
+            {
+                dbAccess.OpenConnection();
+                dbAccess.AddToFavourites(currentSuite);
+                ChangeFavouriteIcon(true);    
+                dbAccess.CloseConnection();
+            }
+        }
+
+        private void ChangeFavouriteIcon(bool test)
+        {
+            if (test)
+                buttonAddToFavourites.BackgroundImage = Image.FromFile("favourite.png");
+            else
+                buttonAddToFavourites.BackgroundImage = Image.FromFile("notfavourite.png");
         }
     }
 }

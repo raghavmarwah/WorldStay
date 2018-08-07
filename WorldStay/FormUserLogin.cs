@@ -17,6 +17,9 @@ namespace WorldStay
         //List to store realtors from the DB.
         List<User> userList = null;
 
+        //global user id
+        int userId;
+
         public FormUserLogin()
         {
             InitializeComponent();
@@ -72,12 +75,14 @@ namespace WorldStay
         {
             var queryLoginCheck = userList
                 .Where(r => r.UserName.Trim().Equals(textBoxUsername.Text) && r.Password.Trim().Equals(textBoxPassword.Text))
-                .Select(r => r);
+                .Select(r => r).ToList();
+
+            userId = queryLoginCheck[0].UserId;
 
             if (queryLoginCheck.Count() > 0)
             {
                 //insert userId here
-                FormMainUI formMainUI = new FormMainUI();
+                FormMainUI formMainUI = new FormMainUI(userId);
                 formMainUI.Show();
                 this.Hide();
             }

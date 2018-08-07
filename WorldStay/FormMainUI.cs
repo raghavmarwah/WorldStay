@@ -18,7 +18,10 @@ namespace WorldStay
         //global list to store display data
         List<DisplayData> dataList = new List<DisplayData>();
 
-        public FormMainUI()
+        //global user id
+        int userId;
+
+        public FormMainUI(int userId)
         {
             InitializeComponent();
 
@@ -28,6 +31,8 @@ namespace WorldStay
             comboBoxNumBedrooms.SelectedIndexChanged += ComboBoxNumBedrooms_SelectedIndexChanged;
             comboBoxNumBathrooms.SelectedIndexChanged += ComboBoxNumBathrooms_SelectedIndexChanged;
             textBoxNameSearchString.TextChanged += TextBoxNameSearchString_TextChanged;
+
+            this.userId = userId;
         }
 
         private void ComboBoxNumBathrooms_SelectedIndexChanged(object sender, EventArgs e)
@@ -90,7 +95,7 @@ namespace WorldStay
 
         private void buttonCloseForm_Click(object sender, EventArgs e)
         {
-            this.Close();
+            this.Dispose();
         }
 
         private void HideAllNavIndicatorsAndPanels()
@@ -320,7 +325,7 @@ namespace WorldStay
         private void buttonViewSuite_Click(object sender, EventArgs e)
         {
             String suiteId = dataGridViewSuites.SelectedRows[0].Cells[0].Value.ToString();
-            FormDisplaySuite formObject = new FormDisplaySuite(int.Parse(suiteId));
+            FormDisplaySuite formObject = new FormDisplaySuite(int.Parse(suiteId), userId);
             formObject.Show();
         }
     }

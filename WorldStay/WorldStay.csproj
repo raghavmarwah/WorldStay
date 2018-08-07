@@ -49,6 +49,7 @@
     <Compile Include="Country.cs" />
     <Compile Include="DatabaseAccess.cs" />
     <Compile Include="DisplayData.cs" />
+    <Compile Include="Favourite.cs" />
     <Compile Include="FormDisplaySuite.cs">
       <SubType>Form</SubType>
     </Compile>
